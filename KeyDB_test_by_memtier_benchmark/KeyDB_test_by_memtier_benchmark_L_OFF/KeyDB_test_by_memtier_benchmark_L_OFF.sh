@@ -6,11 +6,11 @@ CONFIG="KeyDB_test_L_OFF"
 RESULT="Result"
 LOG="Log"
 # define server addr
-#SERVERADDR="127.0.0.1"
-SERVERADDR="192.168.1.2"
+SERVERADDR="127.0.0.1"
+#SERVERADDR="192.168.1.2"
 
 # start KeyDB by numactl interleave
-function startmemcached(){
+function startkeydb(){
 	echo "====begin configing starting modle===="
 	# close numa balance
 	#sudo echo 1 > /proc/sys/kernel/numa_balancing
@@ -38,6 +38,7 @@ function startmemcached(){
 
 # 准备数据
 function prepareDatabase(){
+	echo "===start prepare database==="
 	memtier_benchmark -s $SERVERADDR -p 6379 \
 		--threads=50 \
 		--clients=8 \
@@ -52,6 +53,7 @@ function prepareDatabase(){
 		--out-file=./PrepareData_${CONFIG}_$(date +"%Y%m%d%H%M%S").txt
 	wait
 	echo "===Database is Ready==="
+	sleep 1s
 }
 
 # 清除测试生成数据
@@ -90,6 +92,7 @@ function Gauss82(){
 	echo "===Gauss82 is test end==="
 
 	cleanupdatabases # clean up test databases
+	sleep 1s
 }
 
 # Gauss110 高斯读写，读1写10
@@ -116,6 +119,7 @@ function Gauss110(){
 	echo "===end test for Gauss110==="
 
 	cleanupdatabases # clean up test databases
+	sleep 1s
 }
 
 # Random82 随机读写，读8写2
@@ -141,6 +145,7 @@ function Random82(){
 	echo "===Random82 is test end==="
 
 	cleanupdatabases # clean up test databases
+	sleep 1s
 }
 
 # Random110 随机读写，读1写10
@@ -166,6 +171,7 @@ function Random110(){
 	echo "===End test for Random110==="
 
 	cleanupdatabases # clean up test databases
+	sleep 1s
 }
 
 # Sequential82 顺序读写，读8写2
@@ -190,6 +196,7 @@ function Sequential82(){
 	echo "===End test for Sequential82==="
 
 	cleanupdatabases # clean up test databases
+	sleep 1s
 }
 
 # Sequential110 顺序读写，读1写10
@@ -215,6 +222,7 @@ function Sequential110(){
 	echo "===Sequential110 test is end==="
 
 	cleanupdatabases # clean up test databases
+	sleep 1s
 }
 
 # Sequential10 顺序读写，读1写0
@@ -240,6 +248,7 @@ function Sequential10(){
 	echo "===Sequential10 test is end==="
 
 	cleanupdatabases # clean up test databases
+	sleep 1s
 }
 
 # Sequential01 顺序读写，读0写1
@@ -265,19 +274,31 @@ function Sequential01(){
 	echo "===Sequential01 test is end==="
 
 	cleanupdatabases # clean up test databases
+	sleep 1s
 }
 
-# start test
-startmemcached
-#prepareDatabase
-#cleanupdatabases
-echo "========Start time is: $(date '+%c')========"
-Gauss82
-#Gauss110
-#Random82
-#Random110
-#Sequential82
-#Sequential110
-#Sequential10
-#Sequential01
-echo "========End time is: $(date '+%c')========"
+# main()函数，开始测试keydb
+function testkeydb(){
+	# ===start test===
+	startkeydb
+	#prepareDatabase
+	#cleanupdatabases
+
+	echo "========Start time is: $(date '+%c')========"
+	start_time=$(date +%s)
+	Gauss82
+	Gauss110
+	Random82
+	Random110
+	Sequential82
+	Sequential110
+	Sequential10
+	Sequential01
+	end_time=$(date +%s)
+	echo "========End time is: $(date '+%c')========"
+	elapsed_time=$((end_time - start_time))
+	echo "Elapsed time: $elapsed_time seconds"
+
+}
+
+testkeydb
