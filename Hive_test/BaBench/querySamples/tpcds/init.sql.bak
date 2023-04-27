@@ -1,0 +1,16 @@
+set hive.execution.engine=tez;
+use tpcds_1_parquet;
+set tez.counters.max=400;
+--从 v0.14.0默认 true
+SET hive.cbo.enable=true;
+set hive.stats.autogather=true;
+-- 默认false
+SET hive.compute.query.using.stats=true;
+-- 默认false
+SET hive.stats.fetch.column.stats=true;
+-- 默认true
+--SET hive.stats.fetch.partition.stats=true;
+-- 默认 false
+set hive.vectorized.execution.enabled = true;
+-- 默认 false
+set hive.vectorized.execution.reduce.enabled = true; 

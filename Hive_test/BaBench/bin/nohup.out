@@ -1,0 +1,1591 @@
+Connecting to jdbc:hive2://192.168.1.2:10000
+Connected to: Apache Hive (version 4.0.0-alpha-1)
+Driver: Hive JDBC (version 4.0.0-alpha-1)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+Running init script /home/liujianguo/Download/BaBench/bin/../querySamples/tpch/init.sql
+0: jdbc:hive2://192.168.1.2:10000> -- Initialization SQL file for hive
+0: jdbc:hive2://192.168.1.2:10000> 
+0: jdbc:hive2://192.168.1.2:10000> -- Default execution engine of hive in babench is spark
+0: jdbc:hive2://192.168.1.2:10000> set hive.execution.engine=tez;
+No rows affected (0.114 seconds)
+0: jdbc:hive2://192.168.1.2:10000> use tpch_100_parquet;
+INFO  : Compiling command(queryId=liujianguo_20230425233601_5e9cf4e2-daca-4cf2-a875-68633ab16f13): use tpch_100_parquet
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=liujianguo_20230425233601_5e9cf4e2-daca-4cf2-a875-68633ab16f13); Time taken: 0.092 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=liujianguo_20230425233601_5e9cf4e2-daca-4cf2-a875-68633ab16f13): use tpch_100_parquet
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=liujianguo_20230425233601_5e9cf4e2-daca-4cf2-a875-68633ab16f13); Time taken: 0.03 seconds
+No rows affected (0.14 seconds)
+0: jdbc:hive2://192.168.1.2:10000> -- set mapred.min.split.size=536870912;
+0: jdbc:hive2://192.168.1.2:10000> -- 从 v0.14.0默认 true
+0: jdbc:hive2://192.168.1.2:10000> -- SET hive.cbo.enable=true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认false
+0: jdbc:hive2://192.168.1.2:10000> -- SET hive.compute.query.using.stats=true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认false
+0: jdbc:hive2://192.168.1.2:10000> -- SET hive.stats.fetch.column.stats=true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认true
+0: jdbc:hive2://192.168.1.2:10000> -- SET hive.stats.fetch.partition.stats=true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认 false
+0: jdbc:hive2://192.168.1.2:10000> -- set hive.vectorized.execution.enabled = true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认 false
+0: jdbc:hive2://192.168.1.2:10000> -- set hive.vectorized.execution.reduce.enabled = true;
+0: jdbc:hive2://192.168.1.2:10000> 
+0: jdbc:hive2://192.168.1.2:10000> 0: jdbc:hive2://192.168.1.2:10000> -- using default substitutions
+0: jdbc:hive2://192.168.1.2:10000> 
+0: jdbc:hive2://192.168.1.2:10000> 
+0: jdbc:hive2://192.168.1.2:10000> select
+. . . . . . . . . . . . . . . . .>       l_returnflag,
+. . . . . . . . . . . . . . . . .>       l_linestatus,
+. . . . . . . . . . . . . . . . .>       sum(l_quantity) as sum_qty,
+. . . . . . . . . . . . . . . . .>       sum(l_extendedprice) as sum_base_price,
+. . . . . . . . . . . . . . . . .>       sum(l_extendedprice * (1 - l_discount)) as sum_disc_price,
+. . . . . . . . . . . . . . . . .>       sum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,
+. . . . . . . . . . . . . . . . .>       avg(l_quantity) as avg_qty,
+. . . . . . . . . . . . . . . . .>       avg(l_extendedprice) as avg_price,
+. . . . . . . . . . . . . . . . .>       avg(l_discount) as avg_disc,
+. . . . . . . . . . . . . . . . .>       count(*) as count_order
+. . . . . . . . . . . . . . . . .> from
+. . . . . . . . . . . . . . . . .>       lineitem
+. . . . . . . . . . . . . . . . .> where
+. . . . . . . . . . . . . . . . .>       l_shipdate <= date '1998-12-01' - interval '90' day
+. . . . . . . . . . . . . . . . .> group by
+. . . . . . . . . . . . . . . . .>       l_returnflag,
+. . . . . . . . . . . . . . . . .>       l_linestatus
+. . . . . . . . . . . . . . . . .> order by
+. . . . . . . . . . . . . . . . .>       l_returnflag,
+. . . . . . . . . . . . . . . . .>       l_linestatus
+. . . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . . .> INFO  : Compiling command(queryId=liujianguo_20230425233601_f0af92d2-2950-4b8a-b43f-f4e9d12fd9b0): select
+l_returnflag,
+l_linestatus,
+sum(l_quantity) as sum_qty,
+sum(l_extendedprice) as sum_base_price,
+sum(l_extendedprice * (1 - l_discount)) as sum_disc_price,
+sum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,
+avg(l_quantity) as avg_qty,
+avg(l_extendedprice) as avg_price,
+avg(l_discount) as avg_disc,
+count(*) as count_order
+from
+lineitem
+where
+l_shipdate <= date '1998-12-01' - interval '90' day
+group by
+l_returnflag,
+l_linestatus
+order by
+l_returnflag,
+l_linestatus
+INFO  : No Stats for tpch_100_parquet@lineitem, Columns: l_returnflag, l_tax, l_quantity, l_linestatus, l_extendedprice, l_shipdate, l_discount
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:l_returnflag, type:string, comment:null), FieldSchema(name:l_linestatus, type:string, comment:null), FieldSchema(name:sum_qty, type:double, comment:null), FieldSchema(name:sum_base_price, type:double, comment:null), FieldSchema(name:sum_disc_price, type:double, comment:null), FieldSchema(name:sum_charge, type:double, comment:null), FieldSchema(name:avg_qty, type:double, comment:null), FieldSchema(name:avg_price, type:double, comment:null), FieldSchema(name:avg_disc, type:double, comment:null), FieldSchema(name:count_order, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=liujianguo_20230425233601_f0af92d2-2950-4b8a-b43f-f4e9d12fd9b0); Time taken: 0.556 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=liujianguo_20230425233601_f0af92d2-2950-4b8a-b43f-f4e9d12fd9b0): select
+l_returnflag,
+l_linestatus,
+sum(l_quantity) as sum_qty,
+sum(l_extendedprice) as sum_base_price,
+sum(l_extendedprice * (1 - l_discount)) as sum_disc_price,
+sum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,
+avg(l_quantity) as avg_qty,
+avg(l_extendedprice) as avg_price,
+avg(l_discount) as avg_disc,
+count(*) as count_order
+from
+lineitem
+where
+l_shipdate <= date '1998-12-01' - interval '90' day
+group by
+l_returnflag,
+l_linestatus
+order by
+l_returnflag,
+l_linestatus
+INFO  : Query ID = liujianguo_20230425233601_f0af92d2-2950-4b8a-b43f-f4e9d12fd9b0
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: liujianguo_20230425233601_f0af92d2-2950-4b8a-b43f-f4e9d12fd9b0
+INFO  : Tez session hasn't been created yet. Opening session
+INFO  : Dag name: select
+l_returnflag,
+......lag,
+l_linestatus (Stage-1)
+INFO  : HS2 Host: [ubuntu], Query ID: [liujianguo_20230425233601_f0af92d2-2950-4b8a-b43f-f4e9d12fd9b0], Dag ID: [dag_1682435716843_0002_1], DAG Session ID: [application_1682435716843_0002]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1682435716843_0002)
+
+[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0        7      233       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 8.36 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       54      186       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 9.37 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 10.38 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 11.90 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 13.41 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 14.93 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 16.43 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 17.94 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 19.45 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 20.95 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 22.96 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 24.96 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 26.96 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 28.97 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 30.97 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 33.48 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 35.98 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 38.48 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 40.99 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 43.99 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 47.00 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 50.01 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container       RUNNING    240          0       59      181       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [>>--------------------------] 0%    ELAPSED TIME: 53.51 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .          container       RUNNING    240         38       58      144       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [==>>------------------------] 9%    ELAPSED TIME: 57.02 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ..         container       RUNNING    240         59       59      122       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [===>>-----------------------] 14%   ELAPSED TIME: 60.53 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ..         container       RUNNING    240         61       59      120       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [===>>-----------------------] 14%   ELAPSED TIME: 64.53 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ..         container       RUNNING    240         61       59      120       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [===>>-----------------------] 14%   ELAPSED TIME: 68.53 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ..         container       RUNNING    240         63       59      118       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [===>>-----------------------] 15%   ELAPSED TIME: 72.53 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ..         container       RUNNING    240         66       59      115       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [====>>----------------------] 16%   ELAPSED TIME: 77.04 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ..         container       RUNNING    240         71       59      110       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [====>>----------------------] 17%   ELAPSED TIME: 81.54 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ...        container       RUNNING    240         85       59       96       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [=====>>---------------------] 20%   ELAPSED TIME: 86.54 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ....       container       RUNNING    240        117       59       64       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [=======>>-------------------] 28%   ELAPSED TIME: 91.54 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .....      container       RUNNING    240        124       59       57       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [=======>>-------------------] 30%   ELAPSED TIME: 96.54 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .....      container       RUNNING    240        136       59       45       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [========>>------------------] 33%   ELAPSED TIME: 101.55 s   
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ......     container       RUNNING    240        166       59       15       0       0  
+Reducer 2        container        INITED    169          0        0      169       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [==========>>----------------] 40%   ELAPSED TIME: 106.55 s   
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......    container       RUNNING    240        186       54        0       0       0  
+Reducer 2        container       RUNNING    169          0        5      164       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [===========>>---------------] 45%   ELAPSED TIME: 111.55 s   
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 ........   container       RUNNING    240        198       42        0       0       0  
+Reducer 2        container       RUNNING    169          0       17      152       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [============>>--------------] 48%   ELAPSED TIME: 116.55 s   
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .........  container       RUNNING    240        224       16        0       0       0  
+Reducer 2        container       RUNNING    169          0       43      126       0       0  
+Reducer 3        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/03  [==============>>------------] 54%   ELAPSED TIME: 121.55 s   
+[22;0m[2K----------------------------------------------------------------------------------------------
+[9A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1 .......... container     SUCCEEDED    240        240        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED    169        169        0        0       0       0  
+Reducer 3 ...... container     SUCCEEDED      1          1        0        0       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 03/03  [==========================>>] 100%  ELAPSED TIME: 125.70 s   
+[22;0m[2K----------------------------------------------------------------------------------------------
+INFO  : Completed executing command(queryId=liujianguo_20230425233601_f0af92d2-2950-4b8a-b43f-f4e9d12fd9b0); Time taken: 135.288 seconds
++---------------+---------------+----------------+------------------------+------------------------+------------------------+---------------------+---------------------+-----------------------+--------------+
+| l_returnflag  | l_linestatus  |    sum_qty     |     sum_base_price     |     sum_disc_price     |       sum_charge       |       avg_qty       |      avg_price      |       avg_disc        | count_order  |
++---------------+---------------+----------------+------------------------+------------------------+------------------------+---------------------+---------------------+-----------------------+--------------+
+| A             | F             | 3.775127758E9  | 5.660776097194443E12   | 5.3777363981839375E12  | 5.592847429515936E12   | 25.499370423275426  | 38236.11698430485   | 0.050002243530900395  | 148047881    |
+| N             | F             | 9.8553062E7    | 1.4777109838597995E11  | 1.4038496596503488E11  | 1.4599979303277582E11  | 25.501556956882876  | 38237.19938880449   | 0.04998528433805072   | 3864590      |
+| N             | O             | 7.436302976E9  | 1.1150725681373584E13  | 1.059319530823487E13   | 1.101693224818362E13   | 25.500009404374193  | 38237.22764636092   | 0.049997918315519245  | 291619617    |
+| R             | F             | 3.77572497E9   | 5.66160303274534E12    | 5.3785135639154E12     | 5.593662252666921E12   | 25.50006628406532   | 38236.697258452965  | 0.050001304339625616  | 148067261    |
++---------------+---------------+----------------+------------------------+------------------------+------------------------+---------------------+---------------------+-----------------------+--------------+
+4 rows selected (135.929 seconds)
+0: jdbc:hive2://192.168.1.2:10000> Closing: 0: jdbc:hive2://192.168.1.2:10000
+Connecting to jdbc:hive2://192.168.1.2:10000
+Connected to: Apache Hive (version 4.0.0-alpha-1)
+Driver: Hive JDBC (version 4.0.0-alpha-1)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+Running init script /home/liujianguo/Download/BaBench/bin/../querySamples/tpch/init.sql
+0: jdbc:hive2://192.168.1.2:10000> -- Initialization SQL file for hive
+0: jdbc:hive2://192.168.1.2:10000> 
+0: jdbc:hive2://192.168.1.2:10000> -- Default execution engine of hive in babench is spark
+0: jdbc:hive2://192.168.1.2:10000> set hive.execution.engine=tez;
+No rows affected (0.072 seconds)
+0: jdbc:hive2://192.168.1.2:10000> use tpch_100_parquet;
+INFO  : Compiling command(queryId=liujianguo_20230425234230_0336a826-ba40-490d-b9c3-7828f4eb0b10): use tpch_100_parquet
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=liujianguo_20230425234230_0336a826-ba40-490d-b9c3-7828f4eb0b10); Time taken: 0.052 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=liujianguo_20230425234230_0336a826-ba40-490d-b9c3-7828f4eb0b10): use tpch_100_parquet
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=liujianguo_20230425234230_0336a826-ba40-490d-b9c3-7828f4eb0b10); Time taken: 0.009 seconds
+No rows affected (0.078 seconds)
+0: jdbc:hive2://192.168.1.2:10000> -- set mapred.min.split.size=536870912;
+0: jdbc:hive2://192.168.1.2:10000> -- 从 v0.14.0默认 true
+0: jdbc:hive2://192.168.1.2:10000> -- SET hive.cbo.enable=true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认false
+0: jdbc:hive2://192.168.1.2:10000> -- SET hive.compute.query.using.stats=true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认false
+0: jdbc:hive2://192.168.1.2:10000> -- SET hive.stats.fetch.column.stats=true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认true
+0: jdbc:hive2://192.168.1.2:10000> -- SET hive.stats.fetch.partition.stats=true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认 false
+0: jdbc:hive2://192.168.1.2:10000> -- set hive.vectorized.execution.enabled = true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认 false
+0: jdbc:hive2://192.168.1.2:10000> -- set hive.vectorized.execution.reduce.enabled = true;
+0: jdbc:hive2://192.168.1.2:10000> 
+0: jdbc:hive2://192.168.1.2:10000> 0: jdbc:hive2://192.168.1.2:10000> -- using default substitutions
+0: jdbc:hive2://192.168.1.2:10000> 
+0: jdbc:hive2://192.168.1.2:10000> 
+0: jdbc:hive2://192.168.1.2:10000> select
+. . . . . . . . . . . . . . . . .>       s_acctbal,
+. . . . . . . . . . . . . . . . .>       s_name,
+. . . . . . . . . . . . . . . . .>       n_name,
+. . . . . . . . . . . . . . . . .>       p_partkey,
+. . . . . . . . . . . . . . . . .>       p_mfgr,
+. . . . . . . . . . . . . . . . .>       s_address,
+. . . . . . . . . . . . . . . . .>       s_phone,
+. . . . . . . . . . . . . . . . .>       s_comment
+. . . . . . . . . . . . . . . . .> from
+. . . . . . . . . . . . . . . . .>       part,
+. . . . . . . . . . . . . . . . .>       supplier,
+. . . . . . . . . . . . . . . . .>       partsupp,
+. . . . . . . . . . . . . . . . .>       nation,
+. . . . . . . . . . . . . . . . .>       region
+. . . . . . . . . . . . . . . . .> where
+. . . . . . . . . . . . . . . . .>       p_partkey = ps_partkey
+. . . . . . . . . . . . . . . . .>       and s_suppkey = ps_suppkey
+. . . . . . . . . . . . . . . . .>       and p_size = 15
+. . . . . . . . . . . . . . . . .>       and p_type like '%BRASS'
+. . . . . . . . . . . . . . . . .>       and s_nationkey = n_nationkey
+. . . . . . . . . . . . . . . . .>       and n_regionkey = r_regionkey
+. . . . . . . . . . . . . . . . .>       and r_name = 'EUROPE'
+. . . . . . . . . . . . . . . . .>       and ps_supplycost = (
+. . . . . . . . . . . . . . . . .>               select
+. . . . . . . . . . . . . . . . .>                       min(ps_supplycost)
+. . . . . . . . . . . . . . . . .>               from
+. . . . . . . . . . . . . . . . .>                       partsupp,
+. . . . . . . . . . . . . . . . .>                       supplier,
+. . . . . . . . . . . . . . . . .>                       nation,
+. . . . . . . . . . . . . . . . .>                       region
+. . . . . . . . . . . . . . . . .>               where
+. . . . . . . . . . . . . . . . .>                       p_partkey = ps_partkey
+. . . . . . . . . . . . . . . . .>                       and s_suppkey = ps_suppkey
+. . . . . . . . . . . . . . . . .>                       and s_nationkey = n_nationkey
+. . . . . . . . . . . . . . . . .>                       and n_regionkey = r_regionkey
+. . . . . . . . . . . . . . . . .>                       and r_name = 'EUROPE'
+. . . . . . . . . . . . . . . . .>       )
+. . . . . . . . . . . . . . . . .> order by
+. . . . . . . . . . . . . . . . .>       s_acctbal desc,
+. . . . . . . . . . . . . . . . .>       n_name,
+. . . . . . . . . . . . . . . . .>       s_name,
+. . . . . . . . . . . . . . . . .>       p_partkey
+. . . . . . . . . . . . . . . . .> limit 100
+. . . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . . .> INFO  : Compiling command(queryId=liujianguo_20230425234230_767ef9cf-55f7-426f-9a79-7a2a75455b46): select
+s_acctbal,
+s_name,
+n_name,
+p_partkey,
+p_mfgr,
+s_address,
+s_phone,
+s_comment
+from
+part,
+supplier,
+partsupp,
+nation,
+region
+where
+p_partkey = ps_partkey
+and s_suppkey = ps_suppkey
+and p_size = 15
+and p_type like '%BRASS'
+and s_nationkey = n_nationkey
+and n_regionkey = r_regionkey
+and r_name = 'EUROPE'
+and ps_supplycost = (
+select
+min(ps_supplycost)
+from
+partsupp,
+supplier,
+nation,
+region
+where
+p_partkey = ps_partkey
+and s_suppkey = ps_suppkey
+and s_nationkey = n_nationkey
+and n_regionkey = r_regionkey
+and r_name = 'EUROPE'
+)
+order by
+s_acctbal desc,
+n_name,
+s_name,
+p_partkey
+limit 100
+INFO  : No Stats for tpch_100_parquet@part, Columns: p_partkey, p_type, p_mfgr, p_size
+INFO  : No Stats for tpch_100_parquet@supplier, Columns: s_comment, s_phone, s_nationkey, s_name, s_address, s_acctbal, s_suppkey
+INFO  : No Stats for tpch_100_parquet@partsupp, Columns: ps_suppkey, ps_partkey, ps_supplycost
+INFO  : No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_regionkey, n_name
+INFO  : No Stats for tpch_100_parquet@region, Columns: r_regionkey, r_name
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:s_acctbal, type:double, comment:null), FieldSchema(name:s_name, type:string, comment:null), FieldSchema(name:n_name, type:string, comment:null), FieldSchema(name:p_partkey, type:bigint, comment:null), FieldSchema(name:p_mfgr, type:string, comment:null), FieldSchema(name:s_address, type:string, comment:null), FieldSchema(name:s_phone, type:string, comment:null), FieldSchema(name:s_comment, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=liujianguo_20230425234230_767ef9cf-55f7-426f-9a79-7a2a75455b46); Time taken: 2.154 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=liujianguo_20230425234230_767ef9cf-55f7-426f-9a79-7a2a75455b46): select
+s_acctbal,
+s_name,
+n_name,
+p_partkey,
+p_mfgr,
+s_address,
+s_phone,
+s_comment
+from
+part,
+supplier,
+partsupp,
+nation,
+region
+where
+p_partkey = ps_partkey
+and s_suppkey = ps_suppkey
+and p_size = 15
+and p_type like '%BRASS'
+and s_nationkey = n_nationkey
+and n_regionkey = r_regionkey
+and r_name = 'EUROPE'
+and ps_supplycost = (
+select
+min(ps_supplycost)
+from
+partsupp,
+supplier,
+nation,
+region
+where
+p_partkey = ps_partkey
+and s_suppkey = ps_suppkey
+and s_nationkey = n_nationkey
+and n_regionkey = r_regionkey
+and r_name = 'EUROPE'
+)
+order by
+s_acctbal desc,
+n_name,
+s_name,
+p_partkey
+limit 100
+INFO  : Query ID = liujianguo_20230425234230_767ef9cf-55f7-426f-9a79-7a2a75455b46
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: liujianguo_20230425234230_767ef9cf-55f7-426f-9a79-7a2a75455b46
+INFO  : Tez session hasn't been created yet. Opening session
+INFO  : Dag name: select
+s_acctbal,
+s_n......partkey
+limit 100 (Stage-1)
+INFO  : Modified tez.runtime.io.sort.mb to 50
+INFO  : Setting tez.task.scale.memory.reserve-fraction to 0.30000001192092896
+INFO  : Modified tez.runtime.io.sort.mb to 50
+INFO  : Setting tez.task.scale.memory.reserve-fraction to 0.30000001192092896
+INFO  : Modified tez.runtime.io.sort.mb to 50
+INFO  : Setting tez.task.scale.memory.reserve-fraction to 0.30000001192092896
+INFO  : Modified tez.runtime.io.sort.mb to 50
+INFO  : HS2 Host: [ubuntu], Query ID: [liujianguo_20230425234230_767ef9cf-55f7-426f-9a79-7a2a75455b46], Dag ID: [dag_1682435716843_0003_1], DAG Session ID: [application_1682435716843_0003]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1682435716843_0003)
+
+[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9            container        INITED      1          0        0        1       0       0  
+Reducer 10       container        INITED      1          0        0        1       0       0  
+Map 1            container        INITED      1          0        0        1       0       0  
+Reducer 2        container        INITED      1          0        0        1       0       0  
+Map 3            container        INITED      1          0        0        1       0       0  
+Map 7            container        INITED     15          0        0       15       0       0  
+Map 11           container        INITED      3          0        0        3       0       0  
+Reducer 8        container        INITED      1          0        0        1       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+Reducer 12       container        INITED      1          0        0        1       0       0  
+Reducer 5        container        INITED      1          0        0        1       0       0  
+Reducer 6        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/12  [>>--------------------------] 0%    ELAPSED TIME: 2.25 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[18A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9            container        INITED      1          0        0        1       0       0  
+Reducer 10       container        INITED      1          0        0        1       0       0  
+Map 1            container        INITED      1          0        0        1       0       0  
+Reducer 2        container        INITED      1          0        0        1       0       0  
+Map 3            container        INITED      1          0        0        1       0       0  
+Map 7            container        INITED     15          0        0       15       0       0  
+Map 11           container        INITED      3          0        0        3       0       0  
+Reducer 8        container        INITED      1          0        0        1       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+Reducer 12       container        INITED      1          0        0        1       0       0  
+Reducer 5        container        INITED      1          0        0        1       0       0  
+Reducer 6        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/12  [>>--------------------------] 0%    ELAPSED TIME: 3.25 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[18A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9            container        INITED      1          0        0        1       0       0  
+Reducer 10       container        INITED      1          0        0        1       0       0  
+Map 1            container        INITED      1          0        0        1       0       0  
+Reducer 2        container        INITED      1          0        0        1       0       0  
+Map 3            container        INITED      1          0        0        1       0       0  
+Map 7            container        INITED     15          0        0       15       0       0  
+Map 11           container        INITED      3          0        0        3       0       0  
+Reducer 8        container        INITED      1          0        0        1       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+Reducer 12       container        INITED      1          0        0        1       0       0  
+Reducer 5        container        INITED      1          0        0        1       0       0  
+Reducer 6        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/12  [>>--------------------------] 0%    ELAPSED TIME: 4.26 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[18A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9            container        INITED      1          0        0        1       0       0  
+Reducer 10       container        INITED      1          0        0        1       0       0  
+Map 1            container        INITED      1          0        0        1       0       0  
+Reducer 2        container        INITED      1          0        0        1       0       0  
+Map 3            container        INITED      1          0        0        1       0       0  
+Map 7            container        INITED     15          0        0       15       0       0  
+Map 11           container        INITED      3          0        0        3       0       0  
+Reducer 8        container        INITED      1          0        0        1       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+Reducer 12       container        INITED      1          0        0        1       0       0  
+Reducer 5        container        INITED      1          0        0        1       0       0  
+Reducer 6        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/12  [>>--------------------------] 0%    ELAPSED TIME: 5.26 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[18A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9            container       RUNNING      1          0        1        0       0       0  
+Reducer 10       container        INITED      1          0        0        1       0       0  
+Map 1            container       RUNNING      1          0        1        0       0       0  
+Reducer 2        container        INITED      1          0        0        1       0       0  
+Map 3            container       RUNNING      1          0        1        0       0       0  
+Map 7            container       RUNNING     15          0       15        0       0       0  
+Map 11           container       RUNNING      3          0        3        0       0       0  
+Reducer 8        container        INITED      1          0        0        1       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+Reducer 12       container        INITED      1          0        0        1       0       0  
+Reducer 5        container        INITED      1          0        0        1       0       0  
+Reducer 6        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/12  [>>--------------------------] 0%    ELAPSED TIME: 6.26 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[18A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9            container       RUNNING      1          0        1        0       0       0  
+Reducer 10       container        INITED      1          0        0        1       0       0  
+Map 1            container       RUNNING      1          0        1        0       0       0  
+Reducer 2        container        INITED      1          0        0        1       0       0  
+Map 3            container       RUNNING      1          0        1        0       0       0  
+Map 7            container       RUNNING     15          0       15        0       0       0  
+Map 11           container       RUNNING      3          0        3        0       0       0  
+Reducer 8        container        INITED      1          0        0        1       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+Reducer 12       container        INITED      1          0        0        1       0       0  
+Reducer 5        container        INITED      1          0        0        1       0       0  
+Reducer 6        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/12  [>>--------------------------] 0%    ELAPSED TIME: 7.27 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[18A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9            container       RUNNING      1          0        1        0       0       0  
+Reducer 10       container        INITED      1          0        0        1       0       0  
+Map 1            container       RUNNING      1          0        1        0       0       0  
+Reducer 2        container        INITED      1          0        0        1       0       0  
+Map 3            container       RUNNING      1          0        1        0       0       0  
+Map 7            container       RUNNING     15          0       15        0       0       0  
+Map 11           container       RUNNING      3          0        3        0       0       0  
+Reducer 8        container        INITED      1          0        0        1       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+Reducer 12       container        INITED      1          0        0        1       0       0  
+Reducer 5        container        INITED      1          0        0        1       0       0  
+Reducer 6        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/12  [>>--------------------------] 0%    ELAPSED TIME: 8.27 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[18A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9            container       RUNNING      1          0        1        0       0       0  
+Reducer 10       container        INITED      1          0        0        1       0       0  
+Map 1            container       RUNNING      1          0        1        0       0       0  
+Reducer 2        container        INITED      1          0        0        1       0       0  
+Map 3            container       RUNNING      1          0        1        0       0       0  
+Map 7            container       RUNNING     15          0       15        0       0       0  
+Map 11           container       RUNNING      3          0        3        0       0       0  
+Reducer 8        container        INITED      1          0        0        1       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+Reducer 12       container        INITED      1          0        0        1       0       0  
+Reducer 5        container        INITED      1          0        0        1       0       0  
+Reducer 6        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/12  [>>--------------------------] 0%    ELAPSED TIME: 9.28 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+[18A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 10 ..... container     SUCCEEDED      1          1        0        0       0       0  
+Map 1            container       RUNNING      1          0        1        0       0       0  
+Reducer 2        container        INITED      1          0        0        1       0       0  
+Map 3            container       RUNNING      1          0        1        0       0       0  
+Map 7            container       RUNNING     15          0       15        0       0       0  
+Map 11           container       RUNNING      3          0        3        0       0       0  
+Reducer 8        container        INITED      1          0        0        1       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+Reducer 12       container        INITED      1          0        0        1       0       0  
+Reducer 5        container        INITED      1          0        0        1       0       0  
+Reducer 6        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 02/12  [=>>-------------------------] 7%    ELAPSED TIME: 10.28 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[18A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 10 ..... container     SUCCEEDED      1          1        0        0       0       0  
+Map 1 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      1          1        0        0       0       0  
+Map 3            container       RUNNING      1          0        1        0       0       0  
+Map 7            container       RUNNING     15          0       15        0       0       0  
+Map 11           container       RUNNING      3          0        3        0       0       0  
+Reducer 8        container        INITED      1          0        0        1       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+Reducer 12       container        INITED      1          0        0        1       0       0  
+Reducer 5        container        INITED      1          0        0        1       0       0  
+Reducer 6        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 04/12  [===>>-----------------------] 14%   ELAPSED TIME: 11.28 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[18A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 10 ..... container     SUCCEEDED      1          1        0        0       0       0  
+Map 1 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      1          1        0        0       0       0  
+Map 3 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Map 7 .          container       RUNNING     15          2       13        0       0       0  
+Map 11 ...       container       RUNNING      3          1        2        0       0       0  
+Reducer 8        container       RUNNING      1          0        1        0       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+Reducer 12       container        INITED      1          0        0        1       0       0  
+Reducer 5        container        INITED      1          0        0        1       0       0  
+Reducer 6        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 05/12  [=======>>-------------------] 28%   ELAPSED TIME: 12.79 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[18A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 10 ..... container     SUCCEEDED      1          1        0        0       0       0  
+Map 1 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      1          1        0        0       0       0  
+Map 3 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Map 7 .....      container       RUNNING     15          8        7        0       0       0  
+Map 11 ...       container       RUNNING      3          1        2        0       0       0  
+Reducer 8        container       RUNNING      1          0        1        0       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+Reducer 12       container       RUNNING      1          0        1        0       0       0  
+Reducer 5        container        INITED      1          0        0        1       0       0  
+Reducer 6        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 05/12  [=============>>-------------] 50%   ELAPSED TIME: 14.29 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[18A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 10 ..... container     SUCCEEDED      1          1        0        0       0       0  
+Map 1 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      1          1        0        0       0       0  
+Map 3 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Map 7 .......... container     SUCCEEDED     15         15        0        0       0       0  
+Map 11 ......... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 8        container       RUNNING      1          0        1        0       0       0  
+Reducer 4        container        INITED      1          0        0        1       0       0  
+Reducer 12 ..... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 5        container        INITED      1          0        0        1       0       0  
+Reducer 6        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 08/12  [======================>>----] 85%   ELAPSED TIME: 15.79 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[18A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 10 ..... container     SUCCEEDED      1          1        0        0       0       0  
+Map 1 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      1          1        0        0       0       0  
+Map 3 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Map 7 .......... container     SUCCEEDED     15         15        0        0       0       0  
+Map 11 ......... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 8 ...... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 4 ...... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 12 ..... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 5        container        INITED      1          0        0        1       0       0  
+Reducer 6        container        INITED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 10/12  [========================>>--] 92%   ELAPSED TIME: 17.30 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+[18A[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 9 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 10 ..... container     SUCCEEDED      1          1        0        0       0       0  
+Map 1 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      1          1        0        0       0       0  
+Map 3 .......... container     SUCCEEDED      1          1        0        0       0       0  
+Map 7 .......... container     SUCCEEDED     15         15        0        0       0       0  
+Map 11 ......... container     SUCCEEDED      3          3        0        0       0       0  
+Reducer 8 ...... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 4 ...... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 12 ..... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 5 ...... container     SUCCEEDED      1          1        0        0       0       0  
+Reducer 6 ...... container     SUCCEEDED      1          1        0        0       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 12/12  [==========================>>] 100%  ELAPSED TIME: 18.21 s    
+[22;0m[2K----------------------------------------------------------------------------------------------
+INFO  : Completed executing command(queryId=liujianguo_20230425234230_767ef9cf-55f7-426f-9a79-7a2a75455b46); Time taken: 25.563 seconds
++------------+---------------------+-----------------+------------+-----------------+-------------------------------------------+------------------+----------------------------------------------------+
+| s_acctbal  |       s_name        |     n_name      | p_partkey  |     p_mfgr      |                 s_address                 |     s_phone      |                     s_comment                      |
++------------+---------------------+-----------------+------------+-----------------+-------------------------------------------+------------------+----------------------------------------------------+
+| 9938.53    | Supplier#000005359  | UNITED KINGDOM  | 185358     | Manufacturer#4  | QKuHYh,vZGiwu2FWEJoLDx04                  | 33-429-790-6131  | uriously regular requests hag                      |
+| 9937.84    | Supplier#000005969  | ROMANIA         | 108438     | Manufacturer#1  | ANDENSOSmk,miq23Xfb5RWt6dvUcvt6Qa         | 29-520-692-3537  | efully express instructions. regular requests against the slyly fin |
+| 9936.22    | Supplier#000005250  | UNITED KINGDOM  | 249        | Manufacturer#4  | B3rqp0xbSEim4Mpy2RH J                     | 33-320-228-2957  | etect about the furiously final accounts. slyly ironic pinto beans sleep inside the furiously |
+| 9923.77    | Supplier#000002324  | GERMANY         | 29821      | Manufacturer#4  | y3OD9UywSTOk                              | 17-779-299-1839  | ackages boost blithely. blithely regular deposits c |
+| 9871.22    | Supplier#000006373  | GERMANY         | 43868      | Manufacturer#5  | J8fcXWsTqM                                | 17-813-485-8637  | etect blithely bold asymptotes. fluffily ironic platelets wake furiously; blit |
+| 9870.78    | Supplier#000001286  | GERMANY         | 81285      | Manufacturer#2  | YKA,E2fjiVd7eUrzp2Ef8j1QxGo2DFnosaTEH     | 17-516-924-4574  |  regular accounts. furiously unusual courts above the fi |
+| 9870.78    | Supplier#000001286  | GERMANY         | 181285     | Manufacturer#4  | YKA,E2fjiVd7eUrzp2Ef8j1QxGo2DFnosaTEH     | 17-516-924-4574  |  regular accounts. furiously unusual courts above the fi |
+| 9852.52    | Supplier#000008973  | RUSSIA          | 18972      | Manufacturer#2  | t5L67YdBYYH6o,Vz24jpDyQ9                  | 32-188-594-7038  | rns wake final foxes. carefully unusual depende    |
+| 9847.83    | Supplier#000008097  | RUSSIA          | 130557     | Manufacturer#2  | xMe97bpE69NzdwLoX                         | 32-375-640-3593  |  the special excuses. silent sentiments serve carefully final ac |
+| 9847.57    | Supplier#000006345  | FRANCE          | 86344      | Manufacturer#1  | VSt3rzk3qG698u6ld8HhOByvrTcSTSvQlDQDag    | 16-886-766-7945  | ges. slyly regular requests are. ruthless, express excuses cajole blithely across the unu |
+| 9847.57    | Supplier#000006345  | FRANCE          | 173827     | Manufacturer#2  | VSt3rzk3qG698u6ld8HhOByvrTcSTSvQlDQDag    | 16-886-766-7945  | ges. slyly regular requests are. ruthless, express excuses cajole blithely across the unu |
+| 9836.93    | Supplier#000007342  | RUSSIA          | 4841       | Manufacturer#4  | JOlK7C1,7xrEZSSOw                         | 32-399-414-5385  | blithely carefully bold theodolites. fur           |
+| 9817.1     | Supplier#000002352  | RUSSIA          | 124815     | Manufacturer#2  | 4LfoHUZjgjEbAKw TgdKcgOc4D4uCYw           | 32-551-831-1437  | wake carefully alongside of the carefully final ex |
+| 9817.1     | Supplier#000002352  | RUSSIA          | 152351     | Manufacturer#3  | 4LfoHUZjgjEbAKw TgdKcgOc4D4uCYw           | 32-551-831-1437  | wake carefully alongside of the carefully final ex |
+| 9739.86    | Supplier#000003384  | FRANCE          | 138357     | Manufacturer#2  | o,Z3v4POifevE k9U1b 6J1ucX,I              | 16-494-913-5925  | s after the furiously bold packages sleep fluffily idly final requests: quickly final |
+| 9721.95    | Supplier#000008757  | UNITED KINGDOM  | 156241     | Manufacturer#3  | Atg6GnM4dT2                               | 33-821-407-2995  | eep furiously sauternes; quickl                    |
+| 9681.33    | Supplier#000008406  | RUSSIA          | 78405      | Manufacturer#1  | ,qUuXcftUl                                | 32-139-873-8571  | haggle slyly regular excuses. quic                 |
+| 9643.55    | Supplier#000005148  | ROMANIA         | 107617     | Manufacturer#1  | kT4ciVFslx9z4s79p Js825                   | 29-252-617-4850  | final excuses. final ideas boost quickly furiously speci |
+| 9624.82    | Supplier#000001816  | FRANCE          | 34306      | Manufacturer#3  | e7vab91vLJPWxxZnewmnDBpDmxYHrb            | 16-392-237-6726  | e packages are around the special ideas. special, pending foxes us |
+| 9624.78    | Supplier#000009658  | ROMANIA         | 189657     | Manufacturer#1  | oE9uBgEfSS4opIcepXyAYM,x                  | 29-748-876-2014  | ronic asymptotes wake bravely final                |
+| 9612.94    | Supplier#000003228  | ROMANIA         | 120715     | Manufacturer#2  | KDdpNKN3cWu7ZSrbdqp7AfSLxx,qWB            | 29-325-784-8187  | warhorses. quickly even deposits sublate daringly ironic instructions. slyly blithe t |
+| 9612.94    | Supplier#000003228  | ROMANIA         | 198189     | Manufacturer#4  | KDdpNKN3cWu7ZSrbdqp7AfSLxx,qWB            | 29-325-784-8187  | warhorses. quickly even deposits sublate daringly ironic instructions. slyly blithe t |
+| 9571.83    | Supplier#000004305  | ROMANIA         | 179270     | Manufacturer#2  | qNHZ7WmCzygwMPRDO9Ps                      | 29-973-481-1831  | kly carefully express asymptotes. furiou           |
+| 9558.1     | Supplier#000003532  | UNITED KINGDOM  | 88515      | Manufacturer#4  | EOeuiiOn21OVpTlGguufFDFsbN1p0lhpxHp       | 33-152-301-2164  |  foxes. quickly even excuses use. slyly special foxes nag bl |
+| 9492.79    | Supplier#000005975  | GERMANY         | 25974      | Manufacturer#5  | S6mIiCTx82z7lV                            | 17-992-579-4839  | arefully pending accounts. blithely regular excuses boost carefully carefully ironic p |
+| 9461.05    | Supplier#000002536  | UNITED KINGDOM  | 20033      | Manufacturer#1  | 8mmGbyzaU 7ZS2wJumTibypncu9pNkDc4FYA      | 33-556-973-5522  | . slyly regular deposits wake slyly. furiously regular warthogs are. |
+| 9453.01    | Supplier#000000802  | ROMANIA         | 175767     | Manufacturer#1  | ,6HYXb4uaHITmtMBj4Ak57Pd                  | 29-342-882-6463  | gular frets. permanently special multipliers believe blithely alongs |
+| 9408.65    | Supplier#000007772  | UNITED KINGDOM  | 117771     | Manufacturer#4  | AiC5YAH,gdu0i7                            | 33-152-491-1126  | nag against the final requests. furiously unusual packages cajole blit |
+| 9359.61    | Supplier#000004856  | ROMANIA         | 62349      | Manufacturer#5  | HYogcF3Jb yh1                             | 29-334-870-9731  | y ironic theodolites. blithely sile                |
+| 9357.45    | Supplier#000006188  | UNITED KINGDOM  | 138648     | Manufacturer#1  | g801,ssP8wpTk4Hm                          | 33-583-607-1633  | ously always regular packages. fluffily even accounts beneath the furiously final pack |
+| 9352.04    | Supplier#000003439  | GERMANY         | 170921     | Manufacturer#4  | qYPDgoiBGhCYxjgC                          | 17-128-996-4650  |  according to the carefully bold ideas             |
+| 9312.97    | Supplier#000007807  | RUSSIA          | 90279      | Manufacturer#5  | oGYMPCk9XHGB2PBfKRnHA                     | 32-673-872-5854  | ecial packages among the pending, even requests use regula |
+| 9312.97    | Supplier#000007807  | RUSSIA          | 100276     | Manufacturer#5  | oGYMPCk9XHGB2PBfKRnHA                     | 32-673-872-5854  | ecial packages among the pending, even requests use regula |
+| 9280.27    | Supplier#000007194  | ROMANIA         | 47193      | Manufacturer#3  | zhRUQkBSrFYxIAXTfInj vyGRQjeK             | 29-318-454-2133  | o beans haggle after the furiously unusual deposits. carefully silent dolphins cajole carefully |
+| 9274.8     | Supplier#000008854  | RUSSIA          | 76346      | Manufacturer#3  | 1xhLoOUM7I3mZ1mKnerw OSqdbb4QbGa          | 32-524-148-5221  | y. courts do wake slyly. carefully ironic platelets haggle above the slyly regular the |
+| 9249.35    | Supplier#000003973  | FRANCE          | 26466      | Manufacturer#1  | d18GiDsL6Wm2IsGXM,RZf1jCsgZAOjNYVThTRP4   | 16-722-866-1658  | uests are furiously. regular tithes through the regular, final accounts cajole furiously above the q |
+| 9249.35    | Supplier#000003973  | FRANCE          | 33972      | Manufacturer#1  | d18GiDsL6Wm2IsGXM,RZf1jCsgZAOjNYVThTRP4   | 16-722-866-1658  | uests are furiously. regular tithes through the regular, final accounts cajole furiously above the q |
+| 9208.7     | Supplier#000007769  | ROMANIA         | 40256      | Manufacturer#5  | rsimdze 5o9P Ht7xS                        | 29-964-424-9649  | lites was quickly above the furiously ironic requests. slyly even foxes against the blithely bold  |
+| 9201.47    | Supplier#000009690  | UNITED KINGDOM  | 67183      | Manufacturer#5  | CB BnUTlmi5zdeEl7R7                       | 33-121-267-9529  | e even, even foxes. blithely ironic packages cajole regular packages. slyly final ide |
+| 9192.1     | Supplier#000000115  | UNITED KINGDOM  | 85098      | Manufacturer#3  | nJ 2t0f7Ve,wL1,6WzGBJLNBUCKlsV            | 33-597-248-1220  | es across the carefully express accounts boost caref |
+| 9189.98    | Supplier#000001226  | GERMANY         | 21225      | Manufacturer#4  | qsLCqSvLyZfuXIpjz                         | 17-725-903-1381  |  deposits. blithely bold excuses about the slyly bold forges wake  |
+| 9128.97    | Supplier#000004311  | RUSSIA          | 146768     | Manufacturer#5  | I8IjnXd7NSJRs594RxsRR0                    | 32-155-440-7120  | refully. blithely unusual asymptotes haggle        |
+| 9104.83    | Supplier#000008520  | GERMANY         | 150974     | Manufacturer#4  | RqRVDgD0ER J9 b41vR2,3                    | 17-728-804-1793  | ly about the blithely ironic depths. slyly final theodolites among the fluffily bold ideas print |
+| 9101.0     | Supplier#000005791  | ROMANIA         | 128254     | Manufacturer#5  | zub2zCV,jhHPPQqi,P2INAjE1zI n66cOEoXFG    | 29-549-251-5384  | ts. notornis detect blithely above the carefully bold requests. blithely even package |
+| 9094.57    | Supplier#000004582  | RUSSIA          | 39575      | Manufacturer#1  | WB0XkCSG3r,mnQ n,h9VIxjjr9ARHFvKgMDf      | 32-587-577-1351  | jole. regular accounts sleep blithely frets. final pinto beans play furiously past the  |
+| 8996.87    | Supplier#000004702  | FRANCE          | 102191     | Manufacturer#5  | 8XVcQK23akp                               | 16-811-269-8946  | ickly final packages along the express plat        |
+| 8996.14    | Supplier#000009814  | ROMANIA         | 139813     | Manufacturer#2  | af0O5pg83lPU4IDVmEylXZVqYZQzSDlYLAmR      | 29-995-571-8781  |  dependencies boost quickly across the furiously pending requests! unusual dolphins play sl |
+| 8968.42    | Supplier#000010000  | ROMANIA         | 119999     | Manufacturer#5  | aTGLEusCiL4F PDBdv665XBJhPyCOB0i          | 29-578-432-2146  | ly regular foxes boost slyly. quickly special waters boost carefully ironi |
+| 8936.82    | Supplier#000007043  | UNITED KINGDOM  | 109512     | Manufacturer#1  | FVajceZInZdbJE6Z9XsRUxrUEpiwHDrOXi,1Rz    | 33-784-177-8208  | efully regular courts. furiousl                    |
+| 8929.42    | Supplier#000008770  | FRANCE          | 173735     | Manufacturer#4  | R7cG26TtXrHAP9 HckhfRi                    | 16-242-746-9248  | cajole furiously unusual requests. quickly stealthy requests are.  |
+| 8920.59    | Supplier#000003967  | ROMANIA         | 26460      | Manufacturer#1  | eHoAXe62SY9                               | 29-194-731-3944  | aters. express, pending instructions sleep. brave, r |
+| 8920.59    | Supplier#000003967  | ROMANIA         | 173966     | Manufacturer#2  | eHoAXe62SY9                               | 29-194-731-3944  | aters. express, pending instructions sleep. brave, r |
+| 8913.96    | Supplier#000004603  | UNITED KINGDOM  | 137063     | Manufacturer#2  | OUzlvMUr7n,utLxmPNeYKSf3T24OXskxB5        | 33-789-255-7342  |  haggle slyly above the furiously regular pinto beans. even  |
+| 8877.82    | Supplier#000007967  | FRANCE          | 167966     | Manufacturer#5  | A3pi1BARM4nx6R,qrwFoRPU                   | 16-442-147-9345  | ously foxes. express, ironic requests im           |
+| 8862.24    | Supplier#000003323  | ROMANIA         | 73322      | Manufacturer#3  | W9 lYcsC9FwBqk3ItL                        | 29-736-951-3710  | ly pending ideas sleep about the furiously unu     |
+| 8841.59    | Supplier#000005750  | ROMANIA         | 100729     | Manufacturer#5  | Erx3lAgu0g62iaHF9x50uMH4EgeN9hEG          | 29-344-502-5481  | gainst the pinto beans. fluffily unusual dependencies affix slyly even deposits. |
+| 8781.71    | Supplier#000003121  | ROMANIA         | 13120      | Manufacturer#5  | wNqTogx238ZYCamFb,50v,bj 4IbNFW9Bvw1xP    | 29-707-291-5144  | s wake quickly ironic ideas                        |
+| 8754.24    | Supplier#000009407  | UNITED KINGDOM  | 179406     | Manufacturer#4  | CHRCbkaWcf5B                              | 33-903-970-9604  | e ironic requests. carefully even foxes above the furious |
+| 8691.06    | Supplier#000004429  | UNITED KINGDOM  | 126892     | Manufacturer#2  | k,BQms5UhoAF1B2Asi,fLib                   | 33-964-337-5038  | efully express deposits kindle after the deposits. final  |
+| 8655.99    | Supplier#000006330  | RUSSIA          | 193810     | Manufacturer#2  | UozlaENr0ytKe2w6CeIEWFWn iO3S8Rae7Ou      | 32-561-198-3705  | symptotes use about the express dolphins. requests use after the express platelets. final, ex |
+| 8638.36    | Supplier#000002920  | RUSSIA          | 75398      | Manufacturer#1  | Je2a8bszf3L                               | 32-122-621-7549  | ly quickly ironic requests. even requests whithout t |
+| 8638.36    | Supplier#000002920  | RUSSIA          | 170402     | Manufacturer#3  | Je2a8bszf3L                               | 32-122-621-7549  | ly quickly ironic requests. even requests whithout t |
+| 8607.69    | Supplier#000006003  | UNITED KINGDOM  | 76002      | Manufacturer#2  | EH9wADcEiuenM0NR08zDwMidw,52Y2RyILEiA     | 33-416-807-5206  | ar, pending accounts. pending depende              |
+| 8569.52    | Supplier#000005936  | RUSSIA          | 5935       | Manufacturer#5  | jXaNZ6vwnEWJ2ksLZJpjtgt0bY2a3AU           | 32-644-251-7916  | . regular foxes nag carefully atop the regular, silent deposits. quickly regular packages  |
+| 8564.12    | Supplier#000000033  | GERMANY         | 110032     | Manufacturer#1  | gfeKpYw3400L0SDywXA6Ya1Qmq1w6YB9f3R       | 17-138-897-9374  | n sauternes along the regular asymptotes are regularly along the  |
+| 8553.82    | Supplier#000003979  | ROMANIA         | 143978     | Manufacturer#4  | BfmVhCAnCMY3jzpjUMy4CNWs9 HzpdQR7INJU     | 29-124-646-4897  | ic requests wake against the blithely unusual accounts. fluffily r |
+| 8517.23    | Supplier#000009529  | RUSSIA          | 37025      | Manufacturer#5  | e44R8o7JAIS9iMcr                          | 32-565-297-8775  | ove the even courts. furiously special platelets   |
+| 8517.23    | Supplier#000009529  | RUSSIA          | 59528      | Manufacturer#2  | e44R8o7JAIS9iMcr                          | 32-565-297-8775  | ove the even courts. furiously special platelets   |
+| 8503.7     | Supplier#000006830  | RUSSIA          | 44325      | Manufacturer#4  | BC4WFCYRUZyaIgchU 4S                      | 32-147-878-5069  | pades cajole. furious packages among the carefully express excuses boost furiously across th |
+| 8457.09    | Supplier#000009456  | UNITED KINGDOM  | 19455      | Manufacturer#1  | 7SBhZs8gP1cJjT0Qf433YBk                   | 33-858-440-4349  | cing requests along the furiously unusual deposits promise among the furiously unus |
+| 8441.4     | Supplier#000003817  | FRANCE          | 141302     | Manufacturer#2  | hU3fz3xL78                                | 16-339-356-5115  | ely even ideas. ideas wake slyly furiously unusual instructions. pinto beans sleep ag |
+| 8432.89    | Supplier#000003990  | RUSSIA          | 191470     | Manufacturer#1  | wehBBp1RQbfxAYDASS75MsywmsKHRVdkrvNe6m    | 32-839-509-9301  | ep furiously. packages should have to haggle slyly across the deposits. furiously regu |
+| 8431.4     | Supplier#000002675  | ROMANIA         | 5174       | Manufacturer#1  | HJFStOu9R5NGPOegKhgbzBdyvrG2yh8w          | 29-474-643-1443  | ithely express pinto beans. blithely even foxes haggle. furiously regular theodol |
+| 8407.04    | Supplier#000005406  | RUSSIA          | 162889     | Manufacturer#4  | j7 gYF5RW8DC5UrjKC                        | 32-626-152-4621  | r the blithely regular packages. slyly ironic theodoli |
+| 8386.08    | Supplier#000008518  | FRANCE          | 36014      | Manufacturer#3  | 2jqzqqAVe9crMVGP,n9nTsQXulNLTUYoJjEDcqWV  | 16-618-780-7481  | blithely bold pains are carefully platelets. finally regular pinto beans sleep carefully special |
+| 8376.52    | Supplier#000005306  | UNITED KINGDOM  | 190267     | Manufacturer#5  | 9t8Y8 QqSIsoADPt6NLdk,TP5zyRx41oBUlgoGc9  | 33-632-514-7931  | ly final accounts sleep special, regular requests. furiously regular |
+| 8348.74    | Supplier#000008851  | FRANCE          | 66344      | Manufacturer#4  | nWxi7GwEbjhw1                             | 16-796-240-2472  |  boldly final deposits. regular, even instructions detect slyly. fluffily unusual pinto bea |
+| 8338.58    | Supplier#000007269  | FRANCE          | 17268      | Manufacturer#4  | ZwhJSwABUoiB04,3                          | 16-267-277-4365  | iously final accounts. even pinto beans cajole slyly regular |
+| 8328.46    | Supplier#000001744  | ROMANIA         | 69237      | Manufacturer#5  | oLo3fV64q2,FKHa3p,qHnS7Yzv,ps8            | 29-330-728-5873  | ep carefully-- even, careful packages are slyly along t |
+| 8307.93    | Supplier#000003142  | GERMANY         | 18139      | Manufacturer#1  | dqblvV8dCNAorGlJ                          | 17-595-447-6026  | olites wake furiously regular decoys. final requests nod  |
+| 8231.61    | Supplier#000009558  | RUSSIA          | 192000     | Manufacturer#2  | mcdgen,yT1iJDHDS5fV                       | 32-762-137-5858  |  foxes according to the furi                       |
+| 8152.61    | Supplier#000002731  | ROMANIA         | 15227      | Manufacturer#4  |  nluXJCuY1tu                              | 29-805-463-2030  |  special requests. even, regular warhorses affix among the final gr |
+| 8109.09    | Supplier#000009186  | FRANCE          | 99185      | Manufacturer#1  | wgfosrVPexl9pEXWywaqlBMDYYf               | 16-668-570-1402  | tions haggle slyly about the sil                   |
+| 8102.62    | Supplier#000003347  | UNITED KINGDOM  | 18344      | Manufacturer#5  | m CtXS2S16i                               | 33-454-274-8532  | egrate with the slyly bold instructions. special foxes haggle silently among the |
+| 8046.07    | Supplier#000008780  | FRANCE          | 191222     | Manufacturer#3  | AczzuE0UK9osj ,Lx0Jmh                     | 16-473-215-6395  | onic platelets cajole after the regular instructions. permanently bold excuses |
+| 8042.09    | Supplier#000003245  | RUSSIA          | 135705     | Manufacturer#4  | Dh8Ikg39onrbOL4DyTfGw8a9oKUX3d9Y          | 32-836-132-8872  | osits. packages cajole slyly. furiously regular deposits cajole slyly. q |
+| 8042.09    | Supplier#000003245  | RUSSIA          | 150729     | Manufacturer#1  | Dh8Ikg39onrbOL4DyTfGw8a9oKUX3d9Y          | 32-836-132-8872  | osits. packages cajole slyly. furiously regular deposits cajole slyly. q |
+| 7992.4     | Supplier#000006108  | FRANCE          | 118574     | Manufacturer#1  | 8tBydnTDwUqfBfFV4l3                       | 16-974-998-8937  |  ironic ideas? fluffily even instructions wake. blithel |
+| 7980.65    | Supplier#000001288  | FRANCE          | 13784      | Manufacturer#4  | zE,7HgVPrCn                               | 16-646-464-8247  | ully bold courts. escapades nag slyly. furiously fluffy theodo |
+| 7950.37    | Supplier#000008101  | GERMANY         | 33094      | Manufacturer#5  | kkYvL6IuvojJgTNG IKkaXQDYgx8ILohj         | 17-627-663-8014  | arefully unusual requests x-ray above the quickly final deposits.  |
+| 7937.93    | Supplier#000009012  | ROMANIA         | 83995      | Manufacturer#2  | iUiTziH,Ek3i4lwSgunXMgrcTzwdb             | 29-250-925-9690  | to the blithely ironic deposits nag sly            |
+| 7914.45    | Supplier#000001013  | RUSSIA          | 125988     | Manufacturer#2  | riRcntps4KEDtYScjpMIWeYF6mNnR             | 32-194-698-3365  |  busily bold packages are dolphi                   |
+| 7912.91    | Supplier#000004211  | GERMANY         | 159180     | Manufacturer#5  | 2wQRVovHrm3,v03IKzfTd,1PYsFXQFFOG         | 17-266-947-7315  | ay furiously regular platelets. cou                |
+| 7912.91    | Supplier#000004211  | GERMANY         | 184210     | Manufacturer#4  | 2wQRVovHrm3,v03IKzfTd,1PYsFXQFFOG         | 17-266-947-7315  | ay furiously regular platelets. cou                |
+| 7894.56    | Supplier#000007981  | GERMANY         | 85472      | Manufacturer#4  | NSJ96vMROAbeXP                            | 17-963-404-3760  | ic platelets affix after the furiously             |
+| 7887.08    | Supplier#000009792  | GERMANY         | 164759     | Manufacturer#3  | Y28ITVeYriT3kIGdV2K8fSZ V2UqT5H1Otz       | 17-988-938-4296  | ckly around the carefully fluffy theodolites. slyly ironic pack |
+| 7871.5     | Supplier#000007206  | RUSSIA          | 104695     | Manufacturer#1  | 3w fNCnrVmvJjE95sgWZzvW                   | 32-432-452-7731  | ironic requests. furiously final theodolites cajole. final, express packages sleep. quickly reg |
+| 7852.45    | Supplier#000005864  | RUSSIA          | 8363       | Manufacturer#4  | WCNfBPZeSXh3h,c                           | 32-454-883-3821  | usly unusual pinto beans. brave ideas sleep carefully quickly ironi |
+| 7850.66    | Supplier#000001518  | UNITED KINGDOM  | 86501      | Manufacturer#1  | ONda3YJiHKJOC                             | 33-730-383-3892  | ifts haggle fluffily pending pai                   |
+| 7843.52    | Supplier#000006683  | FRANCE          | 11680      | Manufacturer#4  | 2Z0JGkiv01Y00oCFwUGfviIbhzCdy             | 16-464-517-8943  |  express, final pinto beans x-ray slyly asymptotes. unusual, unusual |
++------------+---------------------+-----------------+------------+-----------------+-------------------------------------------+------------------+----------------------------------------------------+
+100 rows selected (27.825 seconds)
+0: jdbc:hive2://192.168.1.2:10000> Closing: 0: jdbc:hive2://192.168.1.2:10000
+Connecting to jdbc:hive2://192.168.1.2:10000
+Connected to: Apache Hive (version 4.0.0-alpha-1)
+Driver: Hive JDBC (version 4.0.0-alpha-1)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+Running init script /home/liujianguo/Download/BaBench/bin/../querySamples/tpch/init.sql
+0: jdbc:hive2://192.168.1.2:10000> -- Initialization SQL file for hive
+0: jdbc:hive2://192.168.1.2:10000> 
+0: jdbc:hive2://192.168.1.2:10000> -- Default execution engine of hive in babench is spark
+0: jdbc:hive2://192.168.1.2:10000> set hive.execution.engine=tez;
+No rows affected (0.067 seconds)
+0: jdbc:hive2://192.168.1.2:10000> use tpch_100_parquet;
+INFO  : Compiling command(queryId=liujianguo_20230425234435_575cbfa1-b2ec-4342-9c3d-40ace6ff6a92): use tpch_100_parquet
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:null, properties:null)
+INFO  : Completed compiling command(queryId=liujianguo_20230425234435_575cbfa1-b2ec-4342-9c3d-40ace6ff6a92); Time taken: 0.039 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=liujianguo_20230425234435_575cbfa1-b2ec-4342-9c3d-40ace6ff6a92): use tpch_100_parquet
+INFO  : Starting task [Stage-0:DDL] in serial mode
+INFO  : Completed executing command(queryId=liujianguo_20230425234435_575cbfa1-b2ec-4342-9c3d-40ace6ff6a92); Time taken: 0.011 seconds
+No rows affected (0.071 seconds)
+0: jdbc:hive2://192.168.1.2:10000> -- set mapred.min.split.size=536870912;
+0: jdbc:hive2://192.168.1.2:10000> -- 从 v0.14.0默认 true
+0: jdbc:hive2://192.168.1.2:10000> -- SET hive.cbo.enable=true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认false
+0: jdbc:hive2://192.168.1.2:10000> -- SET hive.compute.query.using.stats=true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认false
+0: jdbc:hive2://192.168.1.2:10000> -- SET hive.stats.fetch.column.stats=true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认true
+0: jdbc:hive2://192.168.1.2:10000> -- SET hive.stats.fetch.partition.stats=true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认 false
+0: jdbc:hive2://192.168.1.2:10000> -- set hive.vectorized.execution.enabled = true;
+0: jdbc:hive2://192.168.1.2:10000> -- 默认 false
+0: jdbc:hive2://192.168.1.2:10000> -- set hive.vectorized.execution.reduce.enabled = true;
+0: jdbc:hive2://192.168.1.2:10000> 
+0: jdbc:hive2://192.168.1.2:10000> 0: jdbc:hive2://192.168.1.2:10000> -- using default substitutions
+0: jdbc:hive2://192.168.1.2:10000> 
+0: jdbc:hive2://192.168.1.2:10000> 
+0: jdbc:hive2://192.168.1.2:10000> select
+. . . . . . . . . . . . . . . . .>       l_orderkey,
+. . . . . . . . . . . . . . . . .>       sum(l_extendedprice * (1 - l_discount)) as revenue,
+. . . . . . . . . . . . . . . . .>       o_orderdate,
+. . . . . . . . . . . . . . . . .>       o_shippriority
+. . . . . . . . . . . . . . . . .> from
+. . . . . . . . . . . . . . . . .>       customer,
+. . . . . . . . . . . . . . . . .>       orders,
+. . . . . . . . . . . . . . . . .>       lineitem
+. . . . . . . . . . . . . . . . .> where
+. . . . . . . . . . . . . . . . .>       c_mktsegment = 'BUILDING'
+. . . . . . . . . . . . . . . . .>       and c_custkey = o_custkey
+. . . . . . . . . . . . . . . . .>       and l_orderkey = o_orderkey
+. . . . . . . . . . . . . . . . .>       and o_orderdate < date '1995-03-15'
+. . . . . . . . . . . . . . . . .>       and l_shipdate > date '1995-03-15'
+. . . . . . . . . . . . . . . . .> group by
+. . . . . . . . . . . . . . . . .>       l_orderkey,
+. . . . . . . . . . . . . . . . .>       o_orderdate,
+. . . . . . . . . . . . . . . . .>       o_shippriority
+. . . . . . . . . . . . . . . . .> order by
+. . . . . . . . . . . . . . . . .>       revenue desc,
+. . . . . . . . . . . . . . . . .>       o_orderdate
+. . . . . . . . . . . . . . . . .> limit 10
+. . . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . . .> Interrupting... Please be patient this may take some time.
+INFO  : Compiling command(queryId=liujianguo_20230425234435_0861f140-9b0c-48d6-ad55-1fc7d3608d2b): select
+l_orderkey,
+sum(l_extendedprice * (1 - l_discount)) as revenue,
+o_orderdate,
+o_shippriority
+from
+customer,
+orders,
+lineitem
+where
+c_mktsegment = 'BUILDING'
+and c_custkey = o_custkey
+and l_orderkey = o_orderkey
+and o_orderdate < date '1995-03-15'
+and l_shipdate > date '1995-03-15'
+group by
+l_orderkey,
+o_orderdate,
+o_shippriority
+order by
+revenue desc,
+o_orderdate
+limit 10
+INFO  : No Stats for tpch_100_parquet@customer, Columns: c_custkey, c_mktsegment
+INFO  : No Stats for tpch_100_parquet@orders, Columns: o_orderdate, o_shippriority, o_custkey, o_orderkey
+INFO  : No Stats for tpch_100_parquet@lineitem, Columns: l_orderkey, l_extendedprice, l_shipdate, l_discount
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Created Hive schema: Schema(fieldSchemas:[FieldSchema(name:l_orderkey, type:bigint, comment:null), FieldSchema(name:revenue, type:double, comment:null), FieldSchema(name:o_orderdate, type:string, comment:null), FieldSchema(name:o_shippriority, type:int, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=liujianguo_20230425234435_0861f140-9b0c-48d6-ad55-1fc7d3608d2b); Time taken: 0.678 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=liujianguo_20230425234435_0861f140-9b0c-48d6-ad55-1fc7d3608d2b): select
+l_orderkey,
+sum(l_extendedprice * (1 - l_discount)) as revenue,
+o_orderdate,
+o_shippriority
+from
+customer,
+orders,
+lineitem
+where
+c_mktsegment = 'BUILDING'
+and c_custkey = o_custkey
+and l_orderkey = o_orderkey
+and o_orderdate < date '1995-03-15'
+and l_shipdate > date '1995-03-15'
+group by
+l_orderkey,
+o_orderdate,
+o_shippriority
+order by
+revenue desc,
+o_orderdate
+limit 10
+INFO  : Query ID = liujianguo_20230425234435_0861f140-9b0c-48d6-ad55-1fc7d3608d2b
+INFO  : Total jobs = 1
+INFO  : Launching Job 1 out of 1
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Subscribed to counters: [] for queryId: liujianguo_20230425234435_0861f140-9b0c-48d6-ad55-1fc7d3608d2b
+INFO  : Tez session hasn't been created yet. Opening session
+INFO  : Dag name: select
+l_orderkey,
+su......rderdate
+limit 10 (Stage-1)
+INFO  : HS2 Host: [ubuntu], Query ID: [liujianguo_20230425234435_0861f140-9b0c-48d6-ad55-1fc7d3608d2b], Dag ID: [dag_1682435716843_0004_1], DAG Session ID: [application_1682435716843_0004]
+INFO  : Status: Running (Executing on YARN cluster with App id application_1682435716843_0004)
+
+[2K----------------------------------------------------------------------------------------------
+[2K[36;1m        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+[22;0m[2K----------------------------------------------------------------------------------------------
+[2KMap 1            container        KILLED    120          0        0      120       0       0  
+Map 6            container        KILLED     30          0        0       30       0       0  
+Reducer 2        container        KILLED     14          0        0       14       0       0  
+Map 7            container        KILLED    240          0        0      240       0       0  
+Reducer 3        container        KILLED     65          0        0       65       0       0  
+Reducer 4        container        KILLED     55          0        0       55       0       0  
+Reducer 5        container        KILLED      1          0        0        1       0       0  
+[2K----------------------------------------------------------------------------------------------
+[2K[31;1mVERTICES: 00/07  [>>--------------------------] 0%    ELAPSED TIME: 3.09 s     
+[22;0m[2K----------------------------------------------------------------------------------------------
+Error: Query was cancelled. (state=01000,code=0)
+Closing: 0: jdbc:hive2://192.168.1.2:10000
+Falied: Hive 100GB Tpch test failed at Query q3.
+2023-04-27 19:15:44: Starting Hive Metastore Server
+2023-04-27 19:16:05: Starting HiveServer2
+Hive Session ID = e42f45df-10a4-4297-a38e-507f31b8ca2f
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.hive.common.StringInternUtils (file:/opt/module/apache-hive-4.0.0-alpha-1-bin/lib/hive-common-4.0.0-alpha-1.jar) to field java.net.URI.string
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.hive.common.StringInternUtils
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Hive Session ID = 515a4c51-a9bd-49c8-8dc2-d5073df42434
+No Stats for tpch_100_parquet@supplier, Columns: s_phone, s_name, s_address, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_suppkey, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427191701_2e572308-39fa-4b17-94f4-18489ae96579
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0008)
+
+No Stats for tpch_100_parquet@supplier, Columns: s_phone, s_name, s_address, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_suppkey, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427191942_532729a4-c8f6-4a3f-b9dd-90552440d4a5
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0009)
+
+No Stats for tpch_100_parquet@supplier, Columns: s_phone, s_name, s_address, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_suppkey, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427192137_d46b9a3c-8cf7-43b1-a2ca-66b140342a77
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0010)
+
+No Stats for tpch_100_parquet@supplier, Columns: s_phone, s_name, s_address, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_suppkey, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427192314_be174693-f84d-4d9f-9bd1-75fbfd2ff3bd
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0011)
+
+No Stats for tpch_100_parquet@supplier, Columns: s_phone, s_name, s_address, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_suppkey, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427192646_3c9d6dc0-508b-48ed-9e04-c4ab5fee203d
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0012)
+
+No Stats for tpch_100_parquet@supplier, Columns: s_phone, s_name, s_address, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_suppkey, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427192849_6ba53edf-27a9-428a-9e23-55de6f974252
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0013)
+
+No Stats for tpch_100_parquet@supplier, Columns: s_phone, s_name, s_address, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_suppkey, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427193351_a737879d-2623-4a81-80d4-b89f4bb97ef4
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0014)
+
+No Stats for tpch_100_parquet@lineitem, Columns: l_returnflag, l_tax, l_quantity, l_linestatus, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427193728_8d775dbc-dc21-4cf2-937c-06e61726a819
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0015)
+
+No Stats for tpch_100_parquet@part, Columns: p_partkey, p_type, p_mfgr, p_size
+No Stats for tpch_100_parquet@supplier, Columns: s_comment, s_phone, s_nationkey, s_name, s_address, s_acctbal, s_suppkey
+No Stats for tpch_100_parquet@partsupp, Columns: ps_suppkey, ps_partkey, ps_supplycost
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_regionkey, n_name
+No Stats for tpch_100_parquet@region, Columns: r_regionkey, r_name
+Query ID = liujianguo_20230427193833_f10c6277-6bdd-4ea7-8e79-efb88979d564
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0016)
+
+No Stats for tpch_100_parquet@customer, Columns: c_custkey, c_mktsegment
+No Stats for tpch_100_parquet@orders, Columns: o_orderdate, o_shippriority, o_custkey, o_orderkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_orderkey, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427193916_4a648ae1-b218-4e49-a278-cac71cd3d44b
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0017)
+
+No Stats for tpch_100_parquet@orders, Columns: o_orderdate, o_orderkey, o_orderpriority
+No Stats for tpch_100_parquet@lineitem, Columns: l_commitdate, l_receiptdate, l_orderkey
+Query ID = liujianguo_20230427194217_6680b014-0c6e-47ef-b754-2cd42cbce853
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0018)
+
+No Stats for tpch_100_parquet@customer, Columns: c_custkey, c_nationkey
+No Stats for tpch_100_parquet@orders, Columns: o_orderdate, o_custkey, o_orderkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_orderkey, l_suppkey, l_extendedprice, l_discount
+No Stats for tpch_100_parquet@supplier, Columns: s_nationkey, s_suppkey
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_regionkey, n_name
+No Stats for tpch_100_parquet@region, Columns: r_regionkey, r_name
+Query ID = liujianguo_20230427194405_9aa49646-e501-496f-9ca1-198f0330d8dc
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0019)
+
+No Stats for tpch_100_parquet@lineitem, Columns: l_quantity, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427194510_cddc2e59-0e3c-42c0-964e-d7755931372d
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0020)
+
+No Stats for tpch_100_parquet@supplier, Columns: s_nationkey, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_orderkey, l_suppkey, l_extendedprice, l_shipdate, l_discount
+No Stats for tpch_100_parquet@orders, Columns: o_custkey, o_orderkey
+No Stats for tpch_100_parquet@customer, Columns: c_custkey, c_nationkey
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_name
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_name
+Query ID = liujianguo_20230427194554_cb5e0cd7-34c7-47ee-9e08-119554f17fe3
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0021)
+
+No Stats for tpch_100_parquet@part, Columns: p_partkey, p_type
+No Stats for tpch_100_parquet@supplier, Columns: s_nationkey, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_partkey, l_orderkey, l_suppkey, l_extendedprice, l_discount
+No Stats for tpch_100_parquet@orders, Columns: o_orderdate, o_custkey, o_orderkey
+No Stats for tpch_100_parquet@customer, Columns: c_custkey, c_nationkey
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_regionkey
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_name
+No Stats for tpch_100_parquet@region, Columns: r_regionkey, r_name
+Query ID = liujianguo_20230427194735_01436738-dd5b-48e5-892e-23039b8ecc7a
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0022)
+
+No Stats for tpch_100_parquet@part, Columns: p_partkey, p_name
+No Stats for tpch_100_parquet@supplier, Columns: s_nationkey, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_partkey, l_orderkey, l_quantity, l_suppkey, l_extendedprice, l_discount
+No Stats for tpch_100_parquet@partsupp, Columns: ps_suppkey, ps_partkey, ps_supplycost
+No Stats for tpch_100_parquet@orders, Columns: o_orderdate, o_orderkey
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_name
+Query ID = liujianguo_20230427195337_d96c4abe-0fed-4b1e-86c0-b6cf2adc2949
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0023)
+
+No Stats for tpch_100_parquet@customer, Columns: c_custkey, c_phone, c_acctbal, c_address, c_nationkey, c_name, c_comment
+No Stats for tpch_100_parquet@orders, Columns: o_orderdate, o_custkey, o_orderkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_returnflag, l_orderkey, l_extendedprice, l_discount
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_name
+Query ID = liujianguo_20230427200215_67f1865a-ec1f-4a3b-bd51-8aeb0227b6ce
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0024)
+
+No Stats for tpch_100_parquet@partsupp, Columns: ps_suppkey, ps_availqty, ps_partkey, ps_supplycost
+No Stats for tpch_100_parquet@supplier, Columns: s_nationkey, s_suppkey
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_name
+Warning: Map Join MAPJOIN[71][bigTable=?] in task 'Reducer 2' is a cross product
+Query ID = liujianguo_20230427200520_0983a523-1d9b-4015-88a5-f71712e2bced
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0025)
+
+No Stats for tpch_100_parquet@orders, Columns: o_orderkey, o_orderpriority
+No Stats for tpch_100_parquet@lineitem, Columns: l_commitdate, l_receiptdate, l_orderkey, l_shipmode, l_shipdate
+Query ID = liujianguo_20230427200555_0daf6133-dae6-4048-a67d-d496a0557a9c
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0026)
+
+No Stats for tpch_100_parquet@customer, Columns: c_custkey
+No Stats for tpch_100_parquet@orders, Columns: o_custkey, o_orderkey, o_comment
+Query ID = liujianguo_20230427200731_d7322010-d225-4171-a6f8-496315148f7a
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0027)
+
+No Stats for tpch_100_parquet@lineitem, Columns: l_partkey, l_extendedprice, l_shipdate, l_discount
+No Stats for tpch_100_parquet@part, Columns: p_partkey, p_type
+Query ID = liujianguo_20230427200905_8052ad42-0903-41d5-8b1c-c8a8a43d0056
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0028)
+
+No Stats for tpch_100_parquet@supplier, Columns: s_phone, s_name, s_address, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_suppkey, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427201012_7760288d-3540-470f-b276-144b235678c0
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0029)
+
+No Stats for tpch_100_parquet@partsupp, Columns: ps_suppkey, ps_partkey
+No Stats for tpch_100_parquet@part, Columns: p_partkey, p_brand, p_type, p_size
+No Stats for tpch_100_parquet@supplier, Columns: s_comment, s_suppkey
+Warning: Map Join MAPJOIN[51][bigTable=?] in task 'Map 1' is a cross product
+Query ID = liujianguo_20230427201147_39ddc7cf-4fb4-426b-9855-133684addb82
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0030)
+
+No Stats for tpch_100_parquet@lineitem, Columns: l_partkey, l_quantity, l_extendedprice
+No Stats for tpch_100_parquet@part, Columns: p_partkey, p_container, p_brand
+Query ID = liujianguo_20230427201226_c1bac7b5-bd8a-44a4-8a92-7b0eb8c32df4
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0031)
+
+No Stats for tpch_100_parquet@customer, Columns: c_custkey, c_name
+No Stats for tpch_100_parquet@orders, Columns: o_orderdate, o_custkey, o_totalprice, o_orderkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_orderkey, l_quantity
+Query ID = liujianguo_20230427201915_b2aa404d-54fc-4e84-bba1-c6bb149612bb
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0032)
+
+No Stats for tpch_100_parquet@lineitem, Columns: l_partkey, l_quantity, l_shipmode, l_extendedprice, l_discount, l_shipinstruct
+No Stats for tpch_100_parquet@part, Columns: p_partkey, p_container, p_brand, p_size
+Query ID = liujianguo_20230427202859_e0ccb7a4-dacc-4e51-beec-11614876150c
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0033)
+
+No Stats for tpch_100_parquet@supplier, Columns: s_nationkey, s_name, s_address, s_suppkey
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_name
+No Stats for tpch_100_parquet@partsupp, Columns: ps_suppkey, ps_availqty, ps_partkey
+No Stats for tpch_100_parquet@part, Columns: p_partkey, p_name
+No Stats for tpch_100_parquet@lineitem, Columns: l_partkey, l_quantity, l_suppkey, l_shipdate
+Query ID = liujianguo_20230427203052_b7b46098-111b-4f63-888e-ac874992ed60
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0034)
+
+No Stats for tpch_100_parquet@supplier, Columns: s_nationkey, s_name, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_commitdate, l_receiptdate, l_orderkey, l_suppkey
+No Stats for tpch_100_parquet@orders, Columns: o_orderstatus, o_orderkey
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_name
+No Stats for tpch_100_parquet@lineitem, Columns: l_orderkey, l_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_commitdate, l_receiptdate, l_orderkey, l_suppkey
+Query ID = liujianguo_20230427203253_9fd1823c-714c-406b-8d57-0fd1b7be7148
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0035)
+
+No Stats for tpch_100_parquet@customer, Columns: c_custkey, c_phone, c_acctbal
+No Stats for tpch_100_parquet@orders, Columns: o_custkey
+Warning: Map Join MAPJOIN[38][bigTable=?] in task 'Map 1' is a cross product
+Query ID = liujianguo_20230427203924_8eb04584-470d-4f70-be6c-a831ddec7296
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0036)
+
+No Stats for tpch_100_parquet@lineitem, Columns: l_returnflag, l_tax, l_quantity, l_linestatus, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427204602_cbce484f-bd41-4653-89e0-37a293fa2707
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0037)
+
+No Stats for tpch_100_parquet@part, Columns: p_partkey, p_type, p_mfgr, p_size
+No Stats for tpch_100_parquet@supplier, Columns: s_comment, s_phone, s_nationkey, s_name, s_address, s_acctbal, s_suppkey
+No Stats for tpch_100_parquet@partsupp, Columns: ps_suppkey, ps_partkey, ps_supplycost
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_regionkey, n_name
+No Stats for tpch_100_parquet@region, Columns: r_regionkey, r_name
+Query ID = liujianguo_20230427204727_69e29cf6-f1ef-4607-b712-7bff5bc7c093
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0038)
+
+No Stats for tpch_100_parquet@customer, Columns: c_custkey, c_mktsegment
+No Stats for tpch_100_parquet@orders, Columns: o_orderdate, o_shippriority, o_custkey, o_orderkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_orderkey, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427204806_c3e7648e-a3ef-43a7-ad5d-cefacb642a71
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0039)
+
+No Stats for tpch_100_parquet@orders, Columns: o_orderdate, o_orderkey, o_orderpriority
+No Stats for tpch_100_parquet@lineitem, Columns: l_commitdate, l_receiptdate, l_orderkey
+Query ID = liujianguo_20230427205030_c744124c-f1e5-4f18-b322-e0aef8ded3dd
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0040)
+
+No Stats for tpch_100_parquet@customer, Columns: c_custkey, c_nationkey
+No Stats for tpch_100_parquet@orders, Columns: o_orderdate, o_custkey, o_orderkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_orderkey, l_suppkey, l_extendedprice, l_discount
+No Stats for tpch_100_parquet@supplier, Columns: s_nationkey, s_suppkey
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_regionkey, n_name
+No Stats for tpch_100_parquet@region, Columns: r_regionkey, r_name
+Query ID = liujianguo_20230427205214_2016511f-0112-4773-9b92-4857e6720312
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0041)
+
+No Stats for tpch_100_parquet@lineitem, Columns: l_quantity, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427205332_7b49f3af-8cf7-4a6d-becf-eae771f4b6bd
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0042)
+
+No Stats for tpch_100_parquet@supplier, Columns: s_nationkey, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_orderkey, l_suppkey, l_extendedprice, l_shipdate, l_discount
+No Stats for tpch_100_parquet@orders, Columns: o_custkey, o_orderkey
+No Stats for tpch_100_parquet@customer, Columns: c_custkey, c_nationkey
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_name
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_name
+Query ID = liujianguo_20230427205416_e6ca6ba3-cccc-4bbe-9e4c-039a9706a846
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0043)
+
+No Stats for tpch_100_parquet@part, Columns: p_partkey, p_type
+No Stats for tpch_100_parquet@supplier, Columns: s_nationkey, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_partkey, l_orderkey, l_suppkey, l_extendedprice, l_discount
+No Stats for tpch_100_parquet@orders, Columns: o_orderdate, o_custkey, o_orderkey
+No Stats for tpch_100_parquet@customer, Columns: c_custkey, c_nationkey
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_regionkey
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_name
+No Stats for tpch_100_parquet@region, Columns: r_regionkey, r_name
+Query ID = liujianguo_20230427205556_e18567db-599c-4bac-9df8-18c0c87ac714
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0044)
+
+No Stats for tpch_100_parquet@part, Columns: p_partkey, p_name
+No Stats for tpch_100_parquet@supplier, Columns: s_nationkey, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_partkey, l_orderkey, l_quantity, l_suppkey, l_extendedprice, l_discount
+No Stats for tpch_100_parquet@partsupp, Columns: ps_suppkey, ps_partkey, ps_supplycost
+No Stats for tpch_100_parquet@orders, Columns: o_orderdate, o_orderkey
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_name
+Query ID = liujianguo_20230427210134_53a3862b-ca3d-4b71-a257-58090403ac95
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0045)
+
+No Stats for tpch_100_parquet@customer, Columns: c_custkey, c_phone, c_acctbal, c_address, c_nationkey, c_name, c_comment
+No Stats for tpch_100_parquet@orders, Columns: o_orderdate, o_custkey, o_orderkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_returnflag, l_orderkey, l_extendedprice, l_discount
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_name
+Query ID = liujianguo_20230427210955_3352c437-dc31-4d6b-98a1-ce054fbb1dcb
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0046)
+
+No Stats for tpch_100_parquet@partsupp, Columns: ps_suppkey, ps_availqty, ps_partkey, ps_supplycost
+No Stats for tpch_100_parquet@supplier, Columns: s_nationkey, s_suppkey
+No Stats for tpch_100_parquet@nation, Columns: n_nationkey, n_name
+Warning: Map Join MAPJOIN[71][bigTable=?] in task 'Reducer 2' is a cross product
+Query ID = liujianguo_20230427211303_15acbabb-923a-4748-ba14-1d439a9210b7
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0047)
+
+No Stats for tpch_100_parquet@orders, Columns: o_orderkey, o_orderpriority
+No Stats for tpch_100_parquet@lineitem, Columns: l_commitdate, l_receiptdate, l_orderkey, l_shipmode, l_shipdate
+Query ID = liujianguo_20230427211336_bd4c72f5-8413-43e3-8a14-4a491522843b
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0048)
+
+No Stats for tpch_100_parquet@customer, Columns: c_custkey
+No Stats for tpch_100_parquet@orders, Columns: o_custkey, o_orderkey, o_comment
+Query ID = liujianguo_20230427211504_162604f6-8aeb-4ef7-9bcf-11b83ce922a9
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0049)
+
+No Stats for tpch_100_parquet@lineitem, Columns: l_partkey, l_extendedprice, l_shipdate, l_discount
+No Stats for tpch_100_parquet@part, Columns: p_partkey, p_type
+Query ID = liujianguo_20230427211635_8301b6e2-04c8-44b3-93f8-b3d78bb2ee16
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0050)
+
+No Stats for tpch_100_parquet@supplier, Columns: s_phone, s_name, s_address, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_suppkey, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427211739_f876e022-2ea4-4a4b-9f04-eaec27c0696e
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0051)
+
+No Stats for tpch_100_parquet@supplier, Columns: s_phone, s_name, s_address, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_suppkey, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427213319_fb0bb2a5-fb82-4966-b5c8-0c7976925995
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0052)
+
+No Stats for tpch_100_parquet@supplier, Columns: s_phone, s_name, s_address, s_suppkey
+No Stats for tpch_100_parquet@lineitem, Columns: l_suppkey, l_extendedprice, l_shipdate, l_discount
+Query ID = liujianguo_20230427213603_97056c0b-96e3-4afb-87f4-ee52658c7422
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682592685645_0053)
+
