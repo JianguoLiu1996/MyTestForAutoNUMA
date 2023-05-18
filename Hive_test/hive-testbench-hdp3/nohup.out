@@ -1,0 +1,824 @@
+2023-04-28 14:23:44: Starting Hive Metastore Server
+2023-04-28 14:24:01: Starting HiveServer2
+Hive Session ID = 4aa932c4-b043-4c68-afcf-31acc6804c9b
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.hive.common.StringInternUtils (file:/opt/module/apache-hive-4.0.0-alpha-1-bin/lib/hive-common-4.0.0-alpha-1.jar) to field java.net.URI.string
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.hive.common.StringInternUtils
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Hive Session ID = 14f8bfa0-02cc-4ccd-83de-993cab3225aa
+No Stats for tpcds_1_parquet@store_sales, Columns: ss_sold_date_sk, ss_quantity, ss_list_price
+No Stats for tpcds_1_parquet@date_dim, Columns: d_date_sk, d_year
+No Stats for tpcds_1_parquet@catalog_sales, Columns: cs_sold_date_sk, cs_quantity, cs_list_price
+No Stats for tpcds_1_parquet@web_sales, Columns: ws_quantity, ws_sold_date_sk, ws_list_price
+No Stats for tpcds_1_parquet@store_sales, Columns: ss_sold_date_sk, ss_item_sk, ss_quantity, ss_list_price
+No Stats for tpcds_1_parquet@item, Columns: i_class_id, i_category_id, i_brand_id, i_item_sk
+No Stats for tpcds_1_parquet@date_dim, Columns: d_moy, d_date_sk, d_year
+No Stats for tpcds_1_parquet@item, Columns: i_class_id, i_category_id, i_brand_id, i_item_sk
+No Stats for tpcds_1_parquet@date_dim, Columns: d_date_sk, d_year
+No Stats for tpcds_1_parquet@catalog_sales, Columns: cs_sold_date_sk, cs_item_sk
+No Stats for tpcds_1_parquet@item, Columns: i_class_id, i_category_id, i_brand_id, i_item_sk
+No Stats for tpcds_1_parquet@date_dim, Columns: d_date_sk, d_year
+No Stats for tpcds_1_parquet@web_sales, Columns: ws_item_sk, ws_sold_date_sk
+No Stats for tpcds_1_parquet@item, Columns: i_class_id, i_category_id, i_brand_id, i_item_sk
+No Stats for tpcds_1_parquet@date_dim, Columns: d_date_sk, d_year
+No Stats for tpcds_1_parquet@avg_sales, Columns: average_sales
+No Stats for tpcds_1_parquet@catalog_sales, Columns: cs_quantity, cs_list_price
+No Stats for tpcds_1_parquet@web_sales, Columns: ws_quantity, ws_list_price
+FAILED: SemanticException EXCEPT and INTERSECT operations are only supported with Cost Based Optimizations enabled. Please set 'hive.cbo.enable' to true!
+No Stats for tpcds_1_parquet@store_sales, Columns: ss_customer_sk, ss_ticket_number, ss_item_sk, ss_store_sk, ss_sales_price
+No Stats for tpcds_1_parquet@store_returns, Columns: sr_ticket_number, sr_item_sk
+No Stats for tpcds_1_parquet@store, Columns: s_zip, s_state, s_market_id, s_store_name, s_store_sk
+No Stats for tpcds_1_parquet@item, Columns: i_manager_id, i_units, i_current_price, i_size, i_color, i_item_sk
+No Stats for tpcds_1_parquet@customer, Columns: c_current_addr_sk, c_customer_sk, c_last_name, c_birth_country, c_first_name
+No Stats for tpcds_1_parquet@customer_address, Columns: ca_zip, ca_state, ca_address_sk, ca_country
+Warning: Map Join MAPJOIN[162][bigTable=?] in task 'Reducer 9' is a cross product
+Query ID = liujianguo_20230428145433_934a6628-379b-4abf-9bbf-d98cbcaefe42
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0024)
+
+No Stats for tpcds_1_parquet@catalog_sales, Columns: cs_sold_date_sk, cs_item_sk, cs_bill_customer_sk
+No Stats for tpcds_1_parquet@web_sales, Columns: ws_item_sk, ws_sold_date_sk, ws_bill_customer_sk
+No Stats for tpcds_1_parquet@item, Columns: i_class, i_category, i_item_sk
+No Stats for tpcds_1_parquet@date_dim, Columns: d_moy, d_date_sk, d_year
+No Stats for tpcds_1_parquet@customer, Columns: c_current_addr_sk, c_customer_sk
+No Stats for tpcds_1_parquet@store_sales, Columns: ss_customer_sk, ss_ext_sales_price, ss_sold_date_sk
+No Stats for tpcds_1_parquet@customer_address, Columns: ca_county, ca_state, ca_address_sk
+No Stats for tpcds_1_parquet@store, Columns: s_state, s_county
+No Stats for tpcds_1_parquet@date_dim, Columns: d_month_seq
+Warning: Map Join MAPJOIN[189][bigTable=?] in task 'Reducer 2' is a cross product
+Warning: Map Join MAPJOIN[188][bigTable=?] in task 'Reducer 2' is a cross product
+Warning: Map Join MAPJOIN[187][bigTable=?] in task 'Reducer 2' is a cross product
+Warning: Map Join MAPJOIN[186][bigTable=?] in task 'Reducer 2' is a cross product
+Query ID = liujianguo_20230428150119_72e1866f-e9b8-46bf-8369-97da631165d7
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0025)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/call_center/.hive-staging_hive_2023-04-28_15-25-42_309_5818940808291073223-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/call_center":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/catalog_page/.hive-staging_hive_2023-04-28_15-25-42_445_2568436610306183957-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/catalog_page":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/catalog_returns/.hive-staging_hive_2023-04-28_15-25-42_533_211403155356985170-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/catalog_returns":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/catalog_sales/.hive-staging_hive_2023-04-28_15-25-42_608_9172079700029454663-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/catalog_sales":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/customer/.hive-staging_hive_2023-04-28_15-25-42_690_998593905128658511-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/customer":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/customer_address/.hive-staging_hive_2023-04-28_15-25-42_757_1645636578761133745-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/customer_address":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/customer_demographics/.hive-staging_hive_2023-04-28_15-25-42_827_8966922351937675299-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/customer_demographics":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/date_dim/.hive-staging_hive_2023-04-28_15-25-42_884_1583898087677518495-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/date_dim":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/household_demographics/.hive-staging_hive_2023-04-28_15-25-42_979_8745195038802287182-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/household_demographics":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/income_band/.hive-staging_hive_2023-04-28_15-25-43_057_4600607996707100572-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/income_band":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/inventory/.hive-staging_hive_2023-04-28_15-25-43_099_1416014415332619375-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/inventory":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/item/.hive-staging_hive_2023-04-28_15-25-43_140_3297177471135240517-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/item":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/promotion/.hive-staging_hive_2023-04-28_15-25-43_204_7962019119370670518-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/promotion":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/reason/.hive-staging_hive_2023-04-28_15-25-43_329_1907053916251725970-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/reason":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/ship_mode/.hive-staging_hive_2023-04-28_15-25-43_369_7269569377191749239-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/ship_mode":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/store/.hive-staging_hive_2023-04-28_15-25-43_419_8170516554464631924-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/store":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/store_returns/.hive-staging_hive_2023-04-28_15-25-43_483_3939513745680886377-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/store_returns":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/store_sales/.hive-staging_hive_2023-04-28_15-25-43_543_5087995617009755612-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/store_sales":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/time_dim/.hive-staging_hive_2023-04-28_15-25-43_594_5332548633662285038-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/time_dim":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/warehouse/.hive-staging_hive_2023-04-28_15-25-43_657_2459531855734183859-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/warehouse":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/web_page/.hive-staging_hive_2023-04-28_15-25-43_728_1695872469977022992-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/web_page":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/web_returns/.hive-staging_hive_2023-04-28_15-25-43_782_4159807838719061727-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/web_returns":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/web_sales/.hive-staging_hive_2023-04-28_15-25-43_840_2991470201935064639-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/web_sales":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+FAILED: RuntimeException Cannot create staging directory 'hdfs://ubuntu:9000/BenchmarkData/Tpcds/tpcds_1/web_site/.hive-staging_hive_2023-04-28_15-25-46_692_6588262610703889369-4': Permission denied: user=root, access=WRITE, inode="/BenchmarkData/Tpcds/tpcds_1/web_site":liujianguo:supergroup:drwxr-xr-x
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.check(FSPermissionChecker.java:506)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:346)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermissionWithContext(FSPermissionChecker.java:370)
+	at org.apache.hadoop.hdfs.server.namenode.FSPermissionChecker.checkPermission(FSPermissionChecker.java:240)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1943)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkPermission(FSDirectory.java:1927)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirectory.checkAncestorAccess(FSDirectory.java:1886)
+	at org.apache.hadoop.hdfs.server.namenode.FSDirMkdirOp.mkdirs(FSDirMkdirOp.java:60)
+	at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:3438)
+	at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1166)
+	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.mkdirs(ClientNamenodeProtocolServerSideTranslatorPB.java:742)
+	at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:621)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:589)
+	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine2.java:573)
+	at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1213)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1089)
+	at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:1012)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+	at org.apache.hadoop.ipc.Server$Handler.run(Server.java:3026)
+
+Query ID = liujianguo_20230428153115_5433b59a-8c18-4219-8175-56ccaa818e5a
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.call_center stats: [numFiles=1, numRows=6, totalSize=10840, rawDataSize=2914, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153132_2edb2656-890b-411e-a8e2-bae3ffd0e322
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.catalog_page stats: [numFiles=1, numRows=11718, totalSize=697676, rawDataSize=1210295, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153134_b3ea1f18-b71b-4dc8-acc1-c2b786f5d9d3
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.catalog_returns stats: [numFiles=1, numRows=143672, totalSize=11455027, rawDataSize=14766575, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153138_15818c7a-ebb7-49fe-b06e-5df528574a13
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.catalog_sales stats: [numFiles=1, numRows=1439935, totalSize=116224010, rawDataSize=164718570, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153213_d8586262-1a1b-4edf-8433-b6606ceea103
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.customer stats: [numFiles=1, numRows=100000, totalSize=5435648, rawDataSize=7709831, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153216_c8188479-0592-4c05-819c-22d9e0661844
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.customer_address stats: [numFiles=1, numRows=50000, totalSize=1063150, rawDataSize=1923394, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153218_47e0e3f9-193c-48d1-b53b-e032c7a2ae99
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.customer_demographics stats: [numFiles=120, numRows=1920800, totalSize=8156118, rawDataSize=9215619, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153238_89380cfb-ba3d-4e17-a384-20f49540620d
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.date_dim stats: [numFiles=1, numRows=73049, totalSize=1856872, rawDataSize=3887842, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153241_791b192e-537c-429b-a99d-9725ca18372a
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.household_demographics stats: [numFiles=1, numRows=7200, totalSize=31092, rawDataSize=34706, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153242_bb506d9e-71e1-40d3-adb8-c3e161a81446
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.income_band stats: [numFiles=1, numRows=20, totalSize=1255, rawDataSize=333, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153243_2756be57-3301-421c-a01a-cd3bde7fb27b
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.inventory stats: [numFiles=120, numRows=11745000, totalSize=40838205, rawDataSize=41039421, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153323_4604490e-1dd7-4a3c-a542-ab5fc806d18f
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.item stats: [numFiles=1, numRows=18000, totalSize=1760190, rawDataSize=2997872, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153325_d347c709-b6ce-4e91-a558-584d6ddb7b52
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.promotion stats: [numFiles=1, numRows=300, totalSize=22363, rawDataSize=25592, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153326_14c20125-b9e0-491e-ac9d-c3f58ebf336a
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.reason stats: [numFiles=1, numRows=35, totalSize=1890, rawDataSize=1651, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153327_1acb4960-8db0-49d4-9be9-0254f275da3e
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.ship_mode stats: [numFiles=1, numRows=20, totalSize=2647, rawDataSize=1299, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153328_5c4cc485-2995-415a-a6b4-6ce2ba98936f
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.store stats: [numFiles=1, numRows=12, totalSize=10664, rawDataSize=3432, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153329_bb32ab08-7546-44d4-85c3-5131e7b1c547
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.store_returns stats: [numFiles=1, numRows=288279, totalSize=17978025, rawDataSize=23291191, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153334_2035de90-0db8-42a9-a4be-addeb893ff63
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.store_sales stats: [numFiles=1, numRows=2879789, totalSize=147619312, rawDataSize=224914943, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153418_156310cf-bd22-45bd-a041-32c623c25b13
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.time_dim stats: [numFiles=1, numRows=86400, totalSize=1150514, rawDataSize=2882166, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153421_551ae63c-f13b-43b5-83af-8d93437d1328
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.warehouse stats: [numFiles=1, numRows=5, totalSize=4561, rawDataSize=1070, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153422_39e1cae5-09ad-4dbb-ab67-e1cbab73f2c5
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.web_page stats: [numFiles=1, numRows=60, totalSize=5749, rawDataSize=2592, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153423_871fed1a-d8dd-4eb6-be56-ad72c591ef09
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.web_returns stats: [numFiles=1, numRows=71772, totalSize=5912583, rawDataSize=7432065, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153425_9066ddfa-d727-4907-a5f9-4e6536b3e9ed
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.web_sales stats: [numFiles=1, numRows=718931, totalSize=55604704, rawDataSize=76826030, numFilesErasureCoded=0]
+Query ID = liujianguo_20230428153441_f8efc4a1-b49d-4d95-b9c9-4ff16b56e8bb
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0026)
+
+Table tpcds_1_parquet.web_site stats: [numFiles=1, numRows=30, totalSize=12998, rawDataSize=6837, numFilesErasureCoded=0]
+Warning: Map Join MAPJOIN[194][bigTable=?] in task 'Map 1' is a cross product
+Warning: Map Join MAPJOIN[187][bigTable=?] in task 'Map 1' is a cross product
+Warning: Map Join MAPJOIN[197][bigTable=?] in task 'Map 15' is a cross product
+Warning: Map Join MAPJOIN[196][bigTable=?] in task 'Map 15' is a cross product
+Query ID = liujianguo_20230428153627_518e9c3a-9fad-4c10-9e12-e15a842ba8a7
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0027)
+
+No Stats for tpcds_1_parquet@avg_sales, Columns: average_sales
+FAILED: SemanticException EXCEPT and INTERSECT operations are only supported with Cost Based Optimizations enabled. Please set 'hive.cbo.enable' to true!
+Query ID = liujianguo_20230428153926_1c89ee2d-f852-4f69-876c-c0cb2f7b7044
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0028)
+
+Query ID = liujianguo_20230428154053_72b800ab-4ab6-44ab-b9ea-ccd2f3f0d369
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0029)
+
+Query ID = liujianguo_20230428154352_2728515c-d503-4a06-8acf-bd4cfe49fbb9
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0030)
+
+Query ID = liujianguo_20230428161234_f9181fa6-f0ed-4567-aef5-978ad704cde8
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0031)
+
+Query ID = liujianguo_20230428161708_672ce6e4-001e-47b4-835e-327458cf48ce
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0032)
+
+Query ID = liujianguo_20230428162357_266580e9-62bc-418f-85c5-49e11c32c56b
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0033)
+
+Query ID = liujianguo_20230428165859_6165f071-1507-4317-a87b-927b8a405d5b
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1682607853930_0034)
+

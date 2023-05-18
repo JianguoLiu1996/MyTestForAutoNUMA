@@ -18,5 +18,4 @@
  from ssales
  where i_color = 'chiffon'
  group by c_last_name, c_first_name, s_store_name
- having sum(netpaid) > (select 0.05*avg(netpaid) from ssales)
-            
+ having sum(netpaid) > (select 0.05*avg(netpaid) from ssales);
