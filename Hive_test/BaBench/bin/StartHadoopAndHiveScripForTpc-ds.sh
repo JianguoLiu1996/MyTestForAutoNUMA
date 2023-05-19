@@ -46,8 +46,8 @@ function testHivebytpcds(){
 	cd /home/liujianguo/MyTestForAutoNUMA/Hive_test/BaBench/bin
 	for((i=1;i<=3;i++))
 	do
-		./TestHiveWithTpcds.sh >> TestHiveWithTpcdsOutput-L-ON-${i}nd-20230518.txt
-		#numactl --interleave=all ./TestHiveWithTpcds.sh >> TestHiveWithTpcdsOutput-I-OFF-${i}nd-20230503.txt
+	#	./TestHiveWithTpcds.sh >> TestHiveWithTpcdsOutput-I-ON-${i}nd-20230519.txt
+		numactl --interleave=all ./TestHiveWithTpcds.sh >> TestHiveWithTpcdsOutput-I-ON-${i}nd-20230519.txt
 	done
 }
 #startHadoop
