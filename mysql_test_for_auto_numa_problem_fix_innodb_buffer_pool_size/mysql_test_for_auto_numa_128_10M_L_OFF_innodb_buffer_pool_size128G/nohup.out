@@ -1,0 +1,30 @@
+Restarting mysql (via systemctl): mysql.service.
+==Prepare data==
+==run sysbench for RW==
+Start time is: Sun 09 Jul 2023 08:19:17 AM CST
+End time is: Sun 09 Jul 2023 08:49:18 AM CST
+==run sysbench for RW==
+Start time is: Sun 09 Jul 2023 08:50:18 AM CST
+End time is: Sun 09 Jul 2023 09:20:19 AM CST
+==run sysbench for RW==
+Start time is: Sun 09 Jul 2023 09:21:19 AM CST
+End time is: Sun 09 Jul 2023 09:51:20 AM CST
+==run sysbench test for RO==
+Start time is: Sun 09 Jul 2023 09:52:20 AM CST
+End time is: Sun 09 Jul 2023 10:22:20 AM CST
+==run sysbench test for RO==
+Start time is: Sun 09 Jul 2023 10:23:20 AM CST
+End time is: Sun 09 Jul 2023 10:53:20 AM CST
+==run sysbench test for RO==
+Start time is: Sun 09 Jul 2023 10:54:20 AM CST
+End time is: Sun 09 Jul 2023 11:24:21 AM CST
+== run sysbench for WO==
+Start time is: Sun 09 Jul 2023 11:25:21 AM CST
+End time is: Sun 09 Jul 2023 11:55:22 AM CST
+== run sysbench for WO==
+Start time is: Sun 09 Jul 2023 11:56:22 AM CST
+End time is: Sun 09 Jul 2023 12:26:23 PM CST
+== run sysbench for WO==
+Start time is: Sun 09 Jul 2023 12:27:23 PM CST
+End time is: Sun 09 Jul 2023 12:57:24 PM CST
+脚本运行时间：61020 秒
