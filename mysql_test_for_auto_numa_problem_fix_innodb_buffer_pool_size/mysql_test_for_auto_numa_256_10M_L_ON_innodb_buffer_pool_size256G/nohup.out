@@ -1,0 +1,30 @@
+Restarting mysql (via systemctl): mysql.service.
+==run sysbench for RW==
+Start time is: Fri 07 Jul 2023 06:57:35 PM CST
+End time is: Fri 07 Jul 2023 07:27:37 PM CST
+==run sysbench for RW==
+Start time is: Fri 07 Jul 2023 07:28:37 PM CST
+End time is: Fri 07 Jul 2023 07:58:38 PM CST
+==run sysbench for RW==
+Start time is: Fri 07 Jul 2023 07:59:38 PM CST
+End time is: Fri 07 Jul 2023 08:29:39 PM CST
+==run sysbench test for RO==
+Start time is: Fri 07 Jul 2023 08:30:39 PM CST
+./mysql_test_for_auto_numa_scrip_L_ON_256_10M.sh: line 97:  7178 Segmentation fault      (core dumped) sysbench /home/liujianguo/Download/sysbench-1.0.11/tests/include/oltp_legacy/oltp.lua --mysql-host=localhost --oltp-tables-count=256 --mysql-user=root --mysql-password=123456 --mysql-port=3306 --db-driver=mysql --oltp-table-size=10000000 --mysql-db=testdb --max-requests=0 --oltp-simple-ranges=0 --oltp-distinct-ranges=0 --oltp-sum-ranges=0 --oltp-order-ranges=0 --time=1800 --oltp-read-only=on --threads=200 --report-interval=3 --thread-init-timeout=300 --forced-shutdown=1 run >> "${OUTPUTPATH}mysysbench_ro_${CONFIG}_${NUMBER}_$(date +"%Y%m%d%H%M%S").log"
+End time is: Fri 07 Jul 2023 09:00:42 PM CST
+==run sysbench test for RO==
+Start time is: Fri 07 Jul 2023 09:01:42 PM CST
+End time is: Fri 07 Jul 2023 09:31:43 PM CST
+==run sysbench test for RO==
+Start time is: Fri 07 Jul 2023 09:32:43 PM CST
+End time is: Fri 07 Jul 2023 10:02:44 PM CST
+== run sysbench for WO==
+Start time is: Fri 07 Jul 2023 10:03:44 PM CST
+End time is: Fri 07 Jul 2023 10:33:45 PM CST
+== run sysbench for WO==
+Start time is: Fri 07 Jul 2023 10:34:45 PM CST
+End time is: Fri 07 Jul 2023 11:04:46 PM CST
+== run sysbench for WO==
+Start time is: Fri 07 Jul 2023 11:05:46 PM CST
+End time is: Fri 07 Jul 2023 11:35:47 PM CST
+脚本运行时间：16867 秒
