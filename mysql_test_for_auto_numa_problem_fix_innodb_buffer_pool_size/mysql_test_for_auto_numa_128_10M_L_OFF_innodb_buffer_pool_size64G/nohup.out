@@ -1,0 +1,32 @@
+Restarting mysql (via systemctl): mysql.service.
+==Prepare data==
+Restarting mysql (via systemctl): mysql.service.
+==run sysbench for RW==
+Start time is: Mon 10 Jul 2023 02:14:23 AM CST
+./mysql_test_for_auto_numa_scrip_L_OFF_64_10M.sh: line 42: 65889 Segmentation fault      (core dumped) sysbench /home/liujianguo/Download/sysbench-1.0.11/tests/include/oltp_legacy/oltp.lua --threads=200 --time=1800 --max-requests=0 --mysql-db=testdb --oltp-table-size=10000000 --oltp-tables-count=128 --db-driver=mysql --mysql-host=localhost --mysql-port=3306 --mysql-user=root --mysql-password=123456 --report-interval=3 --forced-shutdown=1 run >> "${OUTPUTPATH}mysysbench_rw_${CONFIG}_${NUMBER}_$(date +"%Y%m%d%H%M%S").log"
+End time is: Mon 10 Jul 2023 02:44:25 AM CST
+==run sysbench for RW==
+Start time is: Mon 10 Jul 2023 02:45:25 AM CST
+End time is: Mon 10 Jul 2023 03:15:26 AM CST
+==run sysbench for RW==
+Start time is: Mon 10 Jul 2023 03:16:26 AM CST
+End time is: Mon 10 Jul 2023 03:46:27 AM CST
+==run sysbench test for RO==
+Start time is: Mon 10 Jul 2023 03:47:27 AM CST
+End time is: Mon 10 Jul 2023 04:17:27 AM CST
+==run sysbench test for RO==
+Start time is: Mon 10 Jul 2023 04:18:27 AM CST
+End time is: Mon 10 Jul 2023 04:48:27 AM CST
+==run sysbench test for RO==
+Start time is: Mon 10 Jul 2023 04:49:27 AM CST
+End time is: Mon 10 Jul 2023 05:19:27 AM CST
+== run sysbench for WO==
+Start time is: Mon 10 Jul 2023 05:20:27 AM CST
+End time is: Mon 10 Jul 2023 05:50:28 AM CST
+== run sysbench for WO==
+Start time is: Mon 10 Jul 2023 05:51:28 AM CST
+End time is: Mon 10 Jul 2023 06:21:29 AM CST
+== run sysbench for WO==
+Start time is: Mon 10 Jul 2023 06:22:29 AM CST
+End time is: Mon 10 Jul 2023 06:52:31 AM CST
+脚本运行时间：37629 秒
